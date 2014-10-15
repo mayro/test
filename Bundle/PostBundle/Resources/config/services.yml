@@ -1,0 +1,7 @@
+parameters:
+    adidas_post.oauth.class: Adidas\Bundle\PostBundle\Command\OauthCommand
+
+services:
+    adidas_post.oauth:
+        class: %adidas_post.oauth.class%
+        arguments: [@service_container]

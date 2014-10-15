@@ -1,0 +1,18 @@
+{%for mem in member %}
+    <div class="reflet"></div>
+    <div class="carte_seule">
+        <img class="photo" src="{{mem.picture}}" alt="">
+        <div class="deco">
+            <p class="nom">{{mem.name|title}}</p>
+            {% if type == 'month' %}
+                <p class="points">{{pointsMonth}} pts</p>
+            {%else%}
+                {%if mem.s is not empty%}
+                    <p class="points">{{mem.s}} pts</p>
+                {%else%}
+                    <p class="points">0 pts</p>
+                {%endif%}
+           {%endif%}
+        </div>
+    </div>
+{%endfor %}

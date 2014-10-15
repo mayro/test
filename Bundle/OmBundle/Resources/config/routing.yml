@@ -1,0 +1,30 @@
+adidas_om_homepage:
+    pattern: /
+    defaults: { _controller: AdidasOmBundle:Default:index }
+
+adidas_om_confirm:
+    pattern:  /confirm
+    defaults: { _controller: AdidasOmBundle:Default:confirm }
+
+adidas_om_presentation:
+    pattern:  /presentation
+    defaults: { _controller: AdidasOmBundle:Default:presentation }
+
+adidas_om_thanks:
+    pattern:  /thanks
+    defaults: { _controller: AdidasOmBundle:Default:thanks }
+
+adidas_om_connection:
+    pattern:  /connection
+    defaults: { _controller: AdidasOmBundle:Default:connection }
+
+adidas_om_profil:
+    pattern:  /profil/{id}/{cnx}
+    defaults: { _controller: AdidasOmBundle:Default:profil, id: 0, cnx: 0 }
+
+adidas_om_profil_edit:
+    pattern:  /edit/profil/{id}
+    defaults: { _controller: AdidasOmBundle:Default:editProfil, id: 0}
+adidas_om_profil_premium:
+    pattern:  /premium/profil/{id}
+    defaults: { _controller: AdidasOmBundle:Default:premiumProfil, id: 0}

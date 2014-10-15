@@ -1,0 +1,13 @@
+# Acme/DemoBundle/Resources/config/admin.yml
+services:
+    sonata.admin.member:
+        class: Adidas\Bundle\OmBundle\Admin\MemberAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "User", label: "Member" }
+        arguments:
+            - ~
+            - Adidas\Bundle\OmBundle\Entity\Member
+            - ~
+        factory_service: doctrine.orm.entity_manager
+        calls:
+            - [ setSiteContext,  [@site_context] ]

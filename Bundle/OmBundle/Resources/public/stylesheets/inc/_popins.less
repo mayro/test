@@ -1,0 +1,90 @@
+/* ===============================
+   POPINS
+   =============================== */
+.popin_txt {
+	padding: 30px 30px 10px;
+	label {display: inline;}
+	a {color: @bleu}
+}
+
+&.popin_adi {
+	#cboxLoadingOverlay {background-color: #131313;}
+	#cboxClose {background-image: url(../images/popin_adi_fermer.png);}
+	#cboxContent  {
+		background: url(../images/bg_popin_adi.png) no-repeat left bottom;
+		color: @blanc;
+		font-size: 16px;
+	}
+	#cboxLoadedContent {
+		border-top: 2px solid @bleu;
+		background: none;
+	}
+	.contenu_popin {
+		padding: 30px 45px 40px;
+		input, select {font-size: 16px;}
+		.titre {
+			.adiN;
+			font-size: 67px;
+			text-align: center;
+			margin-bottom: 0.4em;
+			span {font-size: 17px; color: @bleu;}
+			&.pre {
+				span {color: @dore;}
+			}
+		}
+		&#popin_connexion {
+			form {
+				width: 320px;
+				margin: 0 auto;
+				label {
+					width: 150px;
+					text-align: right;
+					margin-right: 10px;
+					font-weight: bold;
+				}
+				input {
+					width: 150px;
+				}
+				.conteneur_btn {
+					text-align: center;
+					padding-top: 1em;
+				}
+			}
+			
+		}
+		&#popin_confirm {
+			text-align: center;
+			padding-top: 50px;
+			padding-bottom: 50px;
+			.conteneur_btn{margin-bottom: 0;}
+		}
+		&#popin_modif {
+			.photo_id {
+				width: 100px;
+				border: 3px solid @bleu;
+				img {width: 100%;}
+			}
+			form#form_modif {
+				input {
+					&#nom, &#nomb {width: 226px;}
+					&#prenom, &#prenomb {width: 205px;}
+					&#email, &#emailb {width: 213px;}
+					&#cp, &#cpb {width: 180px;}
+					&#util, &#utilb {width: 140px;}
+					&#mdp, &#mdpb {width: 153px;}
+					&#confirm_mdp, &#confirm_mdpb {width: 138px;}
+					&#date, &#dateb {width: 122px;}
+				}
+			}
+		}
+		&#popin_passer_premium {
+			.titre {font-size: 63px;}
+			#form_passer_premium {
+				.bloc_code {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+		}
+	}
+}

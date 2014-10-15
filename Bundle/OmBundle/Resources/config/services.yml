@@ -1,0 +1,81 @@
+parameters:
+#    adidas_om.example.class: Adidas\Bundle\OmBundle\Example
+
+services:
+#    adidas_om.example:
+#        class: %adidas_om.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    my.listener:
+        class: Adidas\Bundle\OmBundle\Listener\MyListener
+        arguments: [@site_context]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+            - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+
+    adidas.repository.member:
+        class: Adidas\Bundle\OmBundle\Entity\MemberRepository
+        arguments: [ AdidasOmBundle:Member ]
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+    adidas.repository.challenge:
+        class: Adidas\Bundle\ChallengeBundle\Entity\ChallengeRepository
+        arguments: [ AdidasChallengeBundle:Challenge ]
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+        
+    adidas.repository.challenge.member:
+        class: Adidas\Bundle\ChallengeBundle\Entity\ChallengeMemberRepository
+        arguments: [ AdidasChallengeBundle:ChallengeMember ]
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+   
+    adidas.repository.member:
+        class: Adidas\Bundle\PostBundle\Entity\PostRepository
+        arguments: [ AdidasPostBundle:Post ]
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+    adidas.repository.post:
+        class: Adidas\Bundle\PostBundle\Entity\PostRepository
+        arguments: [ AdidasPostBundle:Post ]
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+   
+    adidas.repository.previous.month:
+        class: Adidas\Bundle\PostBundle\Entity\PreviousMonthRepository
+        arguments: [ AdidasPostBundle:PreviousMonth]
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+    adidas.twig.adidas_extension:
+        class: Adidas\Bundle\ChallengeBundle\Twig\AdidasExtension
+        tags:
+            - { name: twig.extension }
+        arguments:
+            - "@service_container"
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+    sonata.admin.manager.orm:
+        class: Adidas\Bundle\OmBundle\Admin\ModelManager
+        arguments: 
+            - "@doctrine"
+        calls:
+            - [ setSiteContext,  [@site_context] ]
+
+    site_context:
+        class: Adidas\Bundle\OmBundle\Branding\SiteContext
+        arguments:
+            - "%brandings%"
+            - "%default_branding%"
+            - "%default_locale%"   

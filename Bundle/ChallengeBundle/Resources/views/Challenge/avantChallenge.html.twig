@@ -1,0 +1,24 @@
+{% for ch in challenge%}
+    <div class="header_page xl" style="background: url({{ch.imageAvant}}) no-repeat center bottom">
+        <!-- Image de fond -->
+        <img class="visu_bg" src="{{ch.imageAvant}}" alt="Adidas">
+        <!-- /Image de fond -->
+        <div class="conteneur_centre">
+            <div class="logo_po"><img src="{{asset('bundles/adidasom/images/logo_po_head.png')}}" alt="Peuple olympien"></div>
+            <div class="txt">
+                <div class="infos_challenge">
+                    <span class="contenu">
+                        <span class="nb_particip">{{nbMember}} participants</span>
+                        <img src="{{asset('bundles/adidasom/images/picto_coeur.png')}}" alt="">
+                        <span class="pre_free"></span>
+                    </span>
+                </div>
+                <p class="titre">{{ch.nameChallenge}}</p>
+                <p class="sous_titre">{{ch.description}}</p>
+                <p class="conteneur_btn">
+                    <a href="#" class="btn_bleu_fleche">En savoir plus</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endfor %}

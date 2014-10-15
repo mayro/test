@@ -1,0 +1,401 @@
+{% extends 'AdidasOmBundle::layout.html.twig' %}
+{% block content %}
+<!--
+Start of DoubleClick Floodlight Tag: Please do not remove
+Activity name of this tag: Brand - Olympique Marseille - Landing Page
+URL of the webpage where the tag is expected to be placed: http://www.adidas.com/fr/apps/OlympiqueMarseille/
+This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+Creation Date: 05/15/2014
+-->
+<script type="text/javascript">
+var axel = Math.random() + "";
+var a = axel * 10000000000000;
+document.write('<iframe src="http://2893248.fls.doubleclick.net/activityi;src=2893248;type=omaqy074;cat=olymarlp;ord=1;num=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+<noscript>
+<iframe src="http://2893248.fls.doubleclick.net/activityi;src=2893248;type=omaqy074;cat=olymarlp;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+</noscript>
+<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+
+<!-- CORPS -->
+<script type="text/javascript">
+	function initTag() {
+		adidas.Analytics.tagPageView('EXP|FB|OM|HOME','EXP|FB|OM');
+	}
+	window.onload = initTag;
+</script>
+<div class="page_om" id="page_accueil">
+    <nav>
+        <ul>
+            <li><a href="#section_1" class="actif"></a></li>
+            <li><a href="#section_2"></a></li>
+            <li><a href="#section_3"></a></li>
+            <li><a href="#section_4"></a></li>
+        </ul>
+    </nav>
+    <div class="mob_only" id="header_mob">
+        <img src="{{asset('bundles/adidasom/images/logo_adidas_mob.gif')}}" alt="Adidas">
+    </div>
+    <div class="conteneur_corps">
+        <!-- Image de fond full screen -->
+        <div id="bg_img" class="rubrique conteneur_visu">
+            <div class="visu_full" data-w="1200" data-h="640">
+                <img src="{{asset('bundles/adidasom/images/visu_full.jpg')}}" width="1200" height="640" alt="">
+            </div>
+            <p class="mob_only" id="logo_po_mob">
+                <img src="{{asset('bundles/adidasom/images/logo_po_mob.png')}}" alt="Peuple Olympien">
+            </p>
+            <p class="conteneur_btn mob_only"><a href="#" class="btn_bleu_fleche ancre_inscription"><span>Inscris-toi maintenant</span></a></p>
+        </div>
+        <!-- /Image de fond full screen -->
+        <!-- Section -->
+        <section class="rubrique conteneur_visu" id="section1">
+            <div class="bg_triangle"></div>
+            <div class="visu_full" data-w="1200" data-h="640">
+                <img src="{{asset('bundles/adidasom/images/txt_section1.png')}}" width="1200" height="640" alt="">
+            </div>
+            <div class="txt">
+                <p>Mouille le maillot et défends les couleurs de l'OM sur les réseaux sociaux pour faire le plein de cadeaux : <span class="maj">places VIP, immersion au cœur du club, rencontre avec les joueurs, évènements exclusifs... </span></p>
+                <p><a href="#"class="lien_plus">En savoir plus</a></p>
+                <div class="conteneur_btn">
+                    <p><a href="#" class="btn_bleu_fleche ancre_inscription" onclick="adidas.Analytics.tagPageElement('EXP|FB|OM|HOME|SUB|ST','EXP|FB|OM|HOME|SUB');adidas.Analytics.tagConversionEvent('EXP|FB|OM|HOME|SUB','1','EXP|FB|OM|HOME|SUB','');">Inscris-toi maintenant</a></p>
+                    <p><a href="{{path('adidas_om_connection')}}" class="btn_bleu_coupe popin_connexion">Connecte-toi</a></p>
+                </div>
+            </div>
+        </section>
+        <!-- /Section -->
+        <!-- Section -->
+        <section class="rubrique conteneur_visu" id="section2">
+            <div class="bande">
+                <div class="conteneur_centre">
+                    <div class="col_g">
+                        <div class="titre">freemium</div>
+                        <p>Inscris-toi gratuitement pour participer <br>
+                                à de nombreux challenges et faire le plein de cadeaux OM !</p>
+                    </div>
+                    <div class="col_d">
+                        <div class="titre">premium</div>
+                        <p>Inscris-toi avec le numéro associé à ton maillot pour relever encore plus de <br>
+                                défis et gagner des expériences uniques à vivre avec l'équipe !</p>
+                    </div>
+                </div>
+            </div>
+            <div class="centre_hauteur">
+                <div class="conteneur_centre" id="formulaires">
+                    <ul class="onglets">
+                        <li><a href="#" class="actif"><span>Je n'ai pas de compte Adidas</span></a></li>
+                        <li><a href="#"><span>J'ai un compte Adidas</span></a></li>
+                    </ul>
+                    <div class="contenus_onglets">
+                    <!-- Onglet1 -->
+                        <div class="contenu_onglet">
+                            <form action="{{ path('adidas_om_homepage') }}#form" method="post" id="form_inscription">
+                                {% if error is defined %}
+                                    <p class="erreur" style="display:block">{{ error}}</p>
+                                {% else %}
+                                    <p class="erreur"></p>
+                                {% endif %}
+                                {% for flashMessage in app.session.flashbag.get('error') %}
+                                    <p class="erreur" style="display:block">{{ flashMessage}}</p>
+                                {% else %}
+                                    <p class="erreur"></p>
+                                {% endfor %}
+                                <div class="row">
+                                    <div class="col_1_3">
+                                        <p class="ligne">
+                                            {{form_widget(form_reg.civ)}}
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="nom">Nom*</label> {{form_widget(form_reg.nom)}}
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="prenom">Prénom*</label> {{form_widget(form_reg.prenom)}}
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="email">E-mail*</label> {{form_widget(form_reg.email)}}
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="cp">Code postal*</label>{{form_widget(form_reg.cp)}}
+                                        </p>
+                                        <p class="ligne type_selects">
+                                            <label for="aaaa">Date de naissance*</label>
+                                            <span class="selects">
+                                                {{form_widget(form_reg.jj)}}
+                                                {{form_widget(form_reg.mm)}}
+                                                {{form_widget(form_reg.aaaa)}}
+                                            </span>
+                                        </p>
+                                        <!--<p class="ligne">
+                                            <label for="date">Date de naissance*</label> <input type="text" name="date" id="date" placeholder="jj/mm/aaaa">
+                                        </p>-->
+                                    </div>
+                                    <div class="col_1_3">
+                                        <p class="ligne">
+                                            <label for="util">Nom d'utilisateur*</label> {{form_widget(form_reg.util)}}
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="mdp">Mot de passe* <img src="{{ asset('bundles/adidasom/images/picto_help.png') }}" alt="" class="help_mdp"></label> {{form_widget(form_reg.mdp)}} 
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="confirm_mdp" class="max_120">Confirmez le mot de passe*</label> {{form_widget(form_reg.confirm_mdp)}}
+                                        </p>
+                                        <p class="ligne type_checkbox">
+                                            <input type="checkbox" id="optin" name="optin"> <label for="optin">Je souhaite être tenu informé <br>
+                                            des nouveautés d'Adidas &nbsp;<a href="#informations" class="show_popin"><img src="{{asset('bundles/adidasom/images/picto_help.png')}}" alt=""></a></label> 
+                                        </p>
+                                        <p class="ligne type_checkbox">
+                                            {{form_widget(form_reg.reglement)}}  <label for="reglement">J'ai bien pris connaissance du <a href="{{ asset('bundles/adidasom/docs/REGLEMENT.pdf') }}" target="_blank">règlement du jeu</a></label>
+                                        </p>
+                                        <p class="mentions">* champ obligatoire</p>
+                                    </div>
+                                    <div class="col_1_3">
+                                        <div class="bloc_code ligne">
+                                            <p class="intro"><label for="code">entre ici ton numéro de maillot**<br>
+                                                pour pouvoir relever tous nos défis !</label></p>
+                                            <p class="mention">** présent sur l'étiquette</p>
+                                            <p>
+                                                {{form_widget(form_reg.code)}}
+                                            </p>
+                                            <p class="conteneur_btn">
+                                                <a href="http://www.adidas.fr/Olympique-de-Marseille.html" target="_blank"><span>Découvre le nouveau maillot</span></a>
+                                            </p>
+                                        </div>
+                                        <div class="bouton">
+                                                <button type="submit" class="btn_bleu_fleche"><span>Valider mon inscription</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- POPINS -->
+                                <div class="colorbox_medium popin_txt" id="templateMdp">
+                                    <p>Le mot de passe doit faire entre 8 et 12 caractères et contenir au moins 1 chiffre et 1 lettre.</p>
+                                </div>
+                                <div class="colorbox_medium popin_txt" id="under13">
+                                     <p>Nous sommes désolés. Vous n'avez pas l'âge requis pour vous inscrire.</p>
+                                </div>
+                                <div class="colorbox_medium popin_txt" id="between1315">
+                                    <p>
+                                        {{form_widget(form_reg.pcf_try)}} <label for="pcf_try">Oui, je confirme avoir été autorisé(e) par mes parents ou mes représentants légaux à communiquer mes données personnelles à adidas, afin d’être contacté(e) conformément à sa <a target="_blank" href="http://www.adidas.fr/help-topics-privacy_policy.html
+                                        ">Politique de confidentialité</a>.</label>
+                                    </p>
+                                    <p class="center">
+                                        <input type="submit" class="button btn_bleu" name="register" value="Valider" />
+                                    </p>
+                                </div>
+                                <div class="colorbox_medium popin_txt" id="informations">
+                                    <p>
+                                        J'accepte que <a target="_blank" href="http://www.adidas.fr/help-topics-imprint.html">adidas International Trading B.V.</a> utilise mes données personnelles à des fins de marketing ou dans le cadre d'une enquête d'opinion. J'autorise dès lors l'analyse de l'ensemble de mes échanges avec adidas (historique d'achat, utilisation des applications et des réseaux sociaux, et données personnelles partagées avec adidas) en vue de m'envoyer des messages publicitaires personnalisés relatifs aux produits adidas. J'autorise adidas à me contacter par courrier électronique, par SMS, par voie postale, ainsi que via ses applications ou tout autre moyen de communication que j'ai moi-même communiqué. 
+                                        <a class="show_popin" href="#informations_more">Qu'est-ce quue cela signifie ?</a>
+                                    </p>
+                                </div>
+                                <div class="colorbox_medium popin_txt" id="informations_more">
+                                    <p>
+                                            Nous soussignés, adidas International Trading B.V., sommes autorisés à vous envoyer des informations sur des produits, évènements et promotions adidas susceptibles de vous intéresser, ainsi qu'à vous demander votre avis sur nos produits et services. Nous pouvons vous contacter par les moyens que vous avez sélectionnés, notamment par courrier électronique, téléphone, SMS, voie postale, ainsi que via nos applications. Afin de vous fournir des informations personnalisées, nous mettons au point des profils et analysons vos échanges avec adidas. Par exemple, nous analysons les sites Web que vous consultez, votre comportement d'achat, ainsi que la façon dont vous utilisez nos applications. Nous gardons également une trace des liens sur lesquels vous cliquez dans nos courriers électroniques. De cette façon, nous apprenons à connaître vos centres d'intérêt, afin de pouvoir vous envoyer des informations et des promotions susceptibles de vous intéresser.<br>
+                                            Dans le cas où vous ne souhaiteriez plus recevoir de messages de notre part, ou si vous préférez que nous ne vous contactions plus par SMS, par courrier électronique ou par voie postale, par exemple, veuillez suivre les instructions indiquées dans la communication en question. Vous pouvez également vous désinscrire à partir de <a target="_blank" href="http://www.adidas.fr/help-topics-imprint.html">notre site Web</a>. Pour de plus amples informations, veuillez consulter notre <a target="_blank" href="http://www.adidas.fr/help-topics-privacy_policy.html">Déclaration de confidentialité.</a>
+                                    </p>
+                                </div>
+                                <!-- /POPINS -->
+                            </form>
+                            <p class="liens"><a href="{{ asset('bundles/adidasom/docs/DOTATION.pdf') }}" target="_blank">Dotation</a> | <a href="docs/MENTIONS_LEGALES.pdf" target="_blank">Mentions légales</a></p>
+                        </div>
+                        <!-- /Onglet1 -->
+                        <!-- Onglet2 -->
+                        <div class="contenu_onglet" style="display: none;">
+                            <form action="{{ path('adidas_om_homepage') }}#form" method="post" id="form_connexion">
+                                <p class="erreur"></p>
+                                <div class="row">
+                                    <div class="col_1_3">
+                                        <p class="ligne disabled">
+                                            <input type="radio" id="civ1b" name="civb" disabled="disabled"> <label for="civ1b">M.</label>
+                                            <input type="radio" id="civ2b" name="civb" disabled="disabled"> <label for="civ2b">Mme</label>
+                                        </p>
+                                        <p class="ligne disabled">
+                                            <label for="nomb">Nom*</label> <input type="text" name="nomb" id="nomb" disabled="disabled">
+                                        </p>
+                                        <p class="ligne disabled">
+                                            <label for="prenomb">Prénom*</label> <input type="text" name="prenomb" id="prenomb" disabled="disabled">
+                                        </p>
+                                        <p class="ligne disabled">
+                                            <label for="emailb">E-mail*</label> <input type="text" name="emailb" id="emailb" disabled="disabled">
+                                        </p>
+                                        <p class="ligne disabled">
+                                            <label for="cpb">Code postal*</label> <input type="text" name="cpb" id="cpb" disabled="disabled">
+                                        </p>
+                                        <p class="ligne type_selects disabled">
+                                            <label for="jjb">Date de naissance*</label>
+                                            <span class="selects">
+                                                <select name="jjb" id="jjb" disabled="disabled">
+                                                    <option value="" class="default">JJ</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">...</option>
+                                                </select>
+                                                <select name="mmb" id="mmb" disabled="disabled">
+                                                    <option value="" class="default">MM</option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">...</option>
+                                                </select>
+                                                <select name="aaaab" id="aaaab" disabled="disabled">
+                                                    <option value="" class="default">AAAA</option>
+                                                    <option value="01">2014</option>
+                                                    <option value="02">2013</option>
+                                                    <option value="03">2012</option>
+                                                    <option value="04">...</option>
+                                                </select>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col_1_3">
+                                        <p class="ligne">
+                                            <label for="utilb">Nom d'utilisateur*</label>{{form_widget(form_auth.utilb)}}
+                                        </p>
+                                        <p class="ligne">
+                                            <label for="mdpb">Mot de passe*  <img src="{{asset('bundles/adidasom/images/picto_help.png')}}" alt="" class="help_mdp"></label>{{form_widget(form_auth.mdpb)}}
+                                        </p>
+                                        <p class="ligne disabled">
+                                            <label for="confirm_mdpb" class="max_120">Confirmez le mot de passe*</label> <input type="password" name="confirm_mdpb" id="confirm_mdpb" disabled="disabled">
+                                        </p>
+                                        <p class="ligne type_checkbox disabled">
+                                            <input type="checkbox" id="optinb" name="optinb"> <label for="optinb">Je souhaite être tenu informé <br>
+                                            des nouveautés d'Adidas &nbsp;<a href="#informations" class="show_popin"><img src="{{asset('bundles/adidasom/images/picto_help.png')}}" alt=""></a></label>
+                                        </p>
+                                        <p class="ligne type_checkbox">
+                                            {{form_widget(form_auth.reglementb)}}<label for="reglementb">J'ai bien pris connaissance du <a href="docs/REGLEMENT.pdf" target="_blank">règlement du jeu</a></label>
+                                        </p>
+                                        <p class="mentions">* champ obligatoire</p>
+                                    </div>
+                                    <div class="col_1_3">
+                                        <div class="bloc_code ligne">
+                                            <p class="intro"><label for="code">entre ici ton numéro de maillot**<br>
+                                                pour pouvoir relever tous nos défis !</label></p>
+                                            <p class="mention">** présent sur l'étiquette</p>
+                                            <p>
+                                                {{form_widget(form_auth.codeb)}}
+                                            </p>
+                                            <p class="conteneur_btn">
+                                                <a href="http://www.adidas.fr/Olympique-de-Marseille.html" target="_blank"><span>Découvre le nouveau maillot</span></a>
+                                            </p>
+                                        </div>
+                                        <div class="bouton">
+                                            <button type="submit" class="btn_bleu_fleche"><span>Valider mon inscription</span></button>
+                                        </div>
+                                   </div>
+                                </div>
+                            </form>
+                            <p class="liens"><a href="{{ asset('bundles/adidasom/docs/DOTATION.pdf') }}" target="_blank">Dotation</a> | <a href="{{ asset('bundles/adidasom/docs/MENTIONS_LEGALES.pdf') }}" target="_blank">Mentions légales</a></p>
+                        </div>
+                        <!-- /Onglet2 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Section -->
+        <!-- Section -->
+        <section class="rubrique conteneur_visu" id="section3">
+            <div class="visu_full valign_b" data-w="1200" data-h="640">
+                <img src="{{asset('bundles/adidasom/images/bg_videos.jpg')}}" width="1200" height="640" alt="">
+            </div>
+            <ul class="conteneur_videos">
+                <li id="video1">
+                    <div class="vignette">
+                        <a href="#" onclick="adidas.Analytics.tagPageElement('EXP|FB|OM|HOME|INTERVIEW|MANDANDA','EXP|FB|OM|HOME|INTERVIEW');">Interview mandanda</a>
+                    </div>
+                    <div class="masque"><span></span></div>
+                    <!-- video -->
+                    <div class="conteneur_video">
+                        <div class="contenu_video">
+                            <!--<video class="classique" width="972" height="578" poster="videos/intro.jpg">
+                                    <source type="video/mp4" src="videos/intro.mp4" />
+                            </video>-->
+                            <video class="classique" width="972" height="578" poster="{{asset('bundles/adidasom/videos/video_temp.jpg')}}">
+                                <source type="video/mp4" src="{{asset('bundles/adidasom/videos/video_temp.mp4')}}" />
+                            </video>
+                        </div>
+                        <a href="#" class="close_video">Fermer</a>
+                    </div>
+                    <!-- /Video -->
+                </li>
+                <li id="video2">
+                    <div class="vignette">
+                        <a href="#" onclick="adidas.Analytics.tagPageElement('EXP|FB|OM|HOME|INTERVIEW|GIGNAC','EXP|FB|OM|HOME|INTERVIEW');">Interview gignac</a>
+                    </div>
+                    <div class="masque"><span></span></div>
+                    <!-- video -->
+                    <div class="conteneur_video">
+                        <div class="contenu_video">
+                        <video class="classique" width="972" height="578" poster="{{asset('bundles/adidasom/videos/video_temp.jpg')}}">
+                            <source type="video/mp4" src="{{asset('bundles/adidasom/videos/video_temp.mp4')}}" />
+                        </video>
+                        </div>
+                        <a href="#" class="close_video">Fermer</a>
+                    </div>
+                   <!-- /Video -->
+                </li>
+                <li id="video3" class="disabled">
+                        <div class="vignette">
+                            <a href="#" onclick="adidas.Analytics.tagPageElement('EXP|FB|OM|HOME|INTERVIEW|MENDES','EXP|FB|OM|HOME|INTERVIEW');">Coming soon</a>
+                        </div>
+                        <div class="masque"><span></span></div>
+                        <!-- video -->
+                        <div class="conteneur_video">
+                            <div class="contenu_video">
+                            <!--<video class="classique" width="972" height="578" poster="videos/video_temp.jpg">
+                                    <source type="video/mp4" src="videos/video_temp.mp4" />
+                            </video>-->
+                            </div>
+                            <a href="#" class="close_video">Fermer</a>
+                        </div>
+                        <!-- /Video -->
+                </li>
+                <li id="video4" class="disabled">
+                    <div class="vignette">
+                        <a href="#" onclick="adidas.Analytics.tagPageElement('EXP|FB|OM|HOME|INTERVIEW|MOREL','EXP|FB|OM|HOME|INTERVIEW');">Coming soon</a>
+                    </div>
+                    <div class="masque"><span></span></div>
+                    <!-- video -->
+                    <div class="conteneur_video">
+                        <div class="contenu_video">
+                            <!--<video class="classique" width="972" height="578" poster="videos/intro.jpg">
+                                    <source type="video/mp4" src="videos/intro.mp4" />
+                            </video>-->
+                        </div>
+                        <a href="#" class="close_video">Fermer</a>
+                    </div>
+                    <!-- /Video -->
+                </li>
+            </ul>
+        </section>
+        <!-- /Section -->
+        <!-- Section -->
+        <section class="rubrique conteneur_visu" id="section4">
+            <div class="visu_full valign_t" data-w="1200" data-h="640">
+                <img src="{{asset('bundles/adidasom/images/bg_videos2.jpg')}}" width="1200" height="640" alt="">
+            </div>
+            <div class="centre_hauteur">
+                <div class="pave_scroll conteneur_centre xs">
+                    <!-- Fil social -->
+                    {% block posts%}
+                         {{ render(controller('AdidasPostBundle:Post:posts'))}}
+                    {% endblock %}
+                    <!-- /Fil social -->
+                </div>
+            </div>
+       </section>
+            <!-- /Section -->
+            <a href="#" class="fleche_next"><img src="{{asset('bundles/adidasom/images/fleche_scroll.png')}}" alt="suivant"></a>
+            <div class="loader">
+                <div class="obj_loader">
+                    <span class="pct"><span>0%</span></span>
+                </div>
+            </div>
+            <div class="plus"></div>
+            <div class="plus2"></div>
+        </div>
+		<!-- Ancre top -->
+		<div class="ancre_top"></div>
+		<!-- Ancre top -->
+            </div>
+<!-- /CORPS -->
+{% endblock %}

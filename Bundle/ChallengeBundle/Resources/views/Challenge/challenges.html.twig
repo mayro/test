@@ -1,0 +1,111 @@
+{% extends 'AdidasOmBundle::layout.html.twig' %}
+{% block content%}
+<!-- CORPS -->
+<div class="page_om" id="page_challenges">
+    {% include 'AdidasChallengeBundle:Challenge:headerChallenge.html.twig'%}
+    {% include 'AdidasChallengeBundle:Challenge:avantChallenge.html.twig' with {'challenge': challenge}%}
+    <div class="corps_page" style="background: url({{asset('bundles/adidasom/images/visu_b_challenge.jpg')}}) no-repeat center top">
+        <!-- Nav Adi -->
+        <div class="bandeau_nav">
+                <div class="conteneur_centre">
+                        <ul>
+                            <li><a href="{{ path('adidas_challenges') }}" class="actif">Challenges</a></li>
+                            <li><a href="{{path('adidas_classement')}}">Classements</a></li>
+                            <li><a href="{{path('adidas_om_profil')}}">Mon compte</a></li>
+                        </ul>
+                        <span class="trait"></span>
+                </div>
+        </div>
+        <!-- /Nav Adi -->
+        <!-- Image de fond -->
+        <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_b_challenge.jpg')}}" alt="Adidas">
+        <!-- /Image de fond -->
+        <ul id="ariane_adi" class="conteneur_centre">
+            <li><a href="{{ path('adidas_om_homepage') }}">Accueil</a></li>
+            <li><span>Challenges</span></li>
+        </ul>
+        <div class="titre_liste conteneur_centre">
+            <h1>Challenge</h1>
+            <div class="intro">
+                <p>Mouille le maillot sur les réseaux sociaux et booste ton score !</p>
+            </div>
+        </div>
+        <!-- Fil social -->
+        <div class="conteneur_centre xs">
+            <div class="conteneur_twit">
+                <ul class="liste_social" id="liste_social_hp">
+                    <li class="item vide"></li>
+                    {% for chal in challenges %}
+                        {% if chal.typeReseau == 'twitter'%}
+                            <a href="{{path('adidas_challenge', {id: chal.id})}}">
+                                <li class="item challenge perm twit">
+                                    <div class="visu"><img src="{{chal.vignette}}"> </div>
+                                    <div class="masque">
+                                        <div class="head">
+                                            <h2 class="titre"><a href="#">{{chal.nameChallenge}}</a></h2>
+                                            {% if chal.typeChallenge == 'évènementiel'%}
+                                                {% if chal.dateFin  and  chal.dateDebut %}
+                                                    <p class="date">{{'du '~chal.dateDebut|localizeddate('long', 'none', 'fr')~' au '~chal.dateFin|localizeddate('long', 'none', 'fr') }}</p>
+                                                {% endif %}
+                                            {% elseif chal.typeChallenge == 'permanent'%}
+                                                <p class="date">Challenge permanent</p>
+                                            {% endif %}
+                                        </div>
+                                        <p class="particip">{{getCountMemberByChallenge(chal.id)}} participants</p>
+                                        <span class="type"></span>
+                                    </div>
+                                </li>
+                            </a>
+                        {% elseif chal.typeReseau == 'instagram'%}
+                            <a href="{{path('adidas_challenge', {id: chal.id})}}">
+                                <li class="item challenge insta">
+                                    <div class="visu"><img src="{{chal.vignette}}"></div>
+                                    <div class="masque">
+                                        <div class="head">
+                                            <h2 class="titre"><a href="#">{{chal.nameChallenge}}</a></h2>
+                                            {% if chal.typeChallenge == 'évènementiel'%}
+                                                {% if chal.dateFin  and  chal.dateDebut %}
+                                                    <p class="date">{{'du '~chal.dateDebut|localizeddate('long', 'none', 'fr')~' au '~chal.dateFin|localizeddate('long', 'none', 'fr') }}</p>
+                                                {% endif %}
+                                            {% elseif chal.typeChallenge == 'permanent'%}
+                                                <p class="date">Challenge permanent</p>
+                                            {% endif %}
+                                        </div>
+                                        <p class="particip">{{getCountMemberByChallenge(chal.id)}} participants</p>
+                                        <span class="type"></span>
+                                    </div>
+                                </li>
+                            </a>
+                        {% elseif chal.typeReseau == 'vide'%}
+                            <a href="{{path('adidas_challenge', {id: chal.id})}}">
+                                <li class="item challenge vide">
+                                    <div class="visu"><img src="{{chal.vignette}}"></div>
+                                    <div class="masque">
+                                        <div class="head">
+                                            <h2 class="titre"><a href="#">{{chal.nameChallenge}}</a></h2>
+                                            {% if chal.typeChallenge == 'évènementiel'%}
+                                                {% if chal.dateFin  and  chal.dateDebut %}
+                                                    <p class="date">{{'du '~chal.dateDebut|localizeddate('long', 'none', 'fr')~' au '~chal.dateFin|localizeddate('long', 'none', 'fr') }}</p>
+                                                {% endif %}
+                                            {% elseif chal.typeChallenge == 'permanent'%}
+                                                <p class="date">Challenge permanent</p>
+                                            {% endif %}
+                                        </div>
+                                        <p class="particip">{{getCountMemberByChallenge(chal.id)}} participants</p>
+                                        <span class="type"></span>
+                                    </div>
+                                </li>
+                            </a>
+                        {% endif %}
+                   {% endfor %}
+                </ul>
+            </div>
+        </div>
+    <!-- /Fil social -->
+    </div>
+    <!-- Ancre top -->
+    <div class="ancre_top"></div>
+    <!-- Ancre top -->
+</div>
+<!-- /CORPS -->
+{% endblock %}

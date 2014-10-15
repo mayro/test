@@ -1,0 +1,25 @@
+<div class="contenu_popin" id="popin_connexion">
+    <div class="titre">
+            Se connecter
+    </div>
+    <form id="form_connexion_popin" action="{{ path('adidas_om_connection') }}#form" method="post">
+        {% if error is defined %}
+            <p class="erreur" style="display:block">{{ error}}</p>
+        {% else %}
+            <p class="erreur"></p>
+        {% endif %}
+        <fieldset>
+            <legend class="out">Connexion</legend>
+            <p class="ligne">
+                <label for="util_connexion">Nom d'utilisateur</label>{{form_widget(form_auth.utilb)}}
+            </p>
+            <p class="ligne">
+                <label for="mdp_connexion">Mot de passe</label>{{form_widget(form_auth.mdpb)}}
+            </p>
+            <div class="conteneur_btn">
+                <button type="submit" class="btn_bleu_coupe xl">Valider</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% include 'AdidasOmBundle:js:connection.js.twig' %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+        <title>Peuple Olympien - rejoins la tribu OM</title>
+        <meta name="description" content="">
+        <link rel="icon" href="{{ asset('bundles/adidasom/stylesheets/favicon.ico')}}" type="image/x-icon" />
+        <meta name='viewport' content='width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no' >
+        <link rel="stylesheet" href="{{ asset('bundles/adidasom/stylesheets/normalize.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/adidasom/stylesheets/colorbox.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/adidasom/stylesheets/mediaelementplayer.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/adidasom/stylesheets/jquery.jscrollpane.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/adidasom/stylesheets/styles.css')}}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> 
+        <script src="{{ asset('bundles/adidasom/javascript/vendor/modernizr-2.6.2-respond-1.1.0.min.js')}}"></script>
+        
+    </head>
+    <body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">Vous utilisez un <strong>vieux</strong> navigateur. <a href="http://browsehappy.com/">Mettez le à jour</a> s'il vous plait ou <a href="http://www.google.com/chromeframe/?redirect=true">activez Google Chrome Frame</a> pour profiter pleinement de l'expérience.</p>
+    <![endif]-->
+    <div>
+        <!-- HEAD -->
+        <header id="header">
+            {% include "AdidasOmBundle:Om:header.html.twig" %}
+        </header>
+        <!-- /HEAD -->
+        <!-- CORPS -->
+        {% block content %}
+
+        {% endblock %}
+	<!-- /CORPS -->
+	
+        <!-- FOOTER -->
+        <footer id="footer" style="background-color: #fff;">
+            {% include 'AdidasOmBundle:Om:footer.html.twig'%}
+        </footer>
+	<!-- /FOOTER -->
+    </div>
+    <!-- SCRIPTS JS -->
+    <!-- Firebug a enlever pour prod -->
+            <!--[if IE]><script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script><![endif]-->
+    <!-- /Firebug a enlever pour prod -->
+    
+    <script type="text/javascript" >window.jQuery || document.write('<script src="{{asset('bundles/adidasom/javascript/vendor/jquery-1.10.1.min.js')}}"><\/script>')</script> 
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/TweenMax.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.superscrollorama.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.easing.1.3.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.scrollTo-1.4.3.1-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.placeholder-enhanced.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/imagesloaded.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/mediaelement-and-player.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.mousewheel.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.jscrollpane.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/isotope.min.js')}}"></script>
+    <!--<script src="javascript/validation_form.js"></script>-->
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/validation_form.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min/jquery.colorbox.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/adidasom/javascript/main.js')}}"></script>
+    <!--<script src="javascript/min/main.min.js"></script>-->
+    </body>
+</html>

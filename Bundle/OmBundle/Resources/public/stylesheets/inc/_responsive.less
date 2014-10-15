@@ -1,0 +1,643 @@
+/*VERSION TOUCH*/
+.touch {
+	body {
+		height: auto !important;
+	}
+	.page_om {
+		height: auto !important;
+		.conteneur_corps {
+			position: static !important;
+			left: auto !important;
+			top: auto !important;
+			right: auto !important;
+			bottom: auto !important;
+			.rubrique {
+				position: relative !important;
+				left: auto !important;
+				top: auto !important;
+				right: auto !important;
+				bottom: auto !important;
+				height: 700px !important;
+				&#section1 {
+					margin-top: -700px;
+				}
+				&#section2 {
+					background: url(../images/bg_sombre.jpg) no-repeat center center;
+					background-size: cover;
+				}
+				&#section3 .conteneur_videos li .conteneur_video .close_video {
+					right: 0;
+				}
+			}
+		}
+		.fleche_next, nav {display: none;}
+	}
+	#footer {
+		position: static !important;
+	}
+}
+
+
+
+/*VERSION TABLETTE*/
+@media screen and (min-width: 760px) and (max-width: 959px) {
+
+}
+/*VERSION MOBILE*/
+@media screen and (max-width: 759px) {
+
+	//POPINS
+	#colorbox {
+		&.popin_adi {
+			#cboxContent  {
+				background-image: url(../images/bg_popin_adi_mob.png);
+				.contenu_popin {
+					padding: 20px 10px ;
+					.titre {font-size: 35px;}
+					&#popin_connexion {
+						padding-bottom: 50px;
+						form {
+							width: 100%;
+							label {
+								width: 100%;
+								text-align: left;
+							}
+							input {
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+			#popin_modif {
+				padding-bottom: 40px !important;
+				.col_1_3, .col_2_3 {
+					width: auto;
+					float: none;
+				}
+				.bloc_code {margin-left: auto; margin-right: auto;}
+				.bouton {text-align: center;}
+			}
+			#popin_passer_premium {
+				padding-bottom: 40px !important;
+			}
+		}
+	}
+
+	
+	.touch {
+
+		#header, #footer {display: none;}
+		body {
+			background: @noir;
+			min-width: initial;
+		}
+
+		.page_om {
+			#header_mob {
+				background-color: @noir;
+				border-bottom: 1px solid #222;
+				> img {
+					display: block;
+					margin: 0 auto;
+					width: 59px;
+				}
+				.menu_mob {
+					position: absolute;
+					left: 12px;
+					top: 7px;
+					z-index: 50;
+					> a img {
+						width: 22px;
+					}
+					ul {
+						display: none;
+						position: absolute;
+						left: -2px;
+						top: 25px;
+						border: 2px solid @noir;
+						border-bottom: none;
+						li {
+							border-bottom: 2px solid @noir;
+							a {
+								display: block;
+								padding: 8px 10px;
+								background-color: @blanc;
+								color: @noir;
+								&.actif {
+									color: @bleu;
+									text-decoration: none;
+								}
+							}
+						}
+					}
+				}
+			}
+			.conteneur_centre  {
+				.border_box;
+				width: 100%;
+				padding: 0 10px;
+			}
+			.row > * {
+				width: 100%;
+				.contenu {padding-right: 0;}
+			}
+			section, .rubrique, .conteneur_corps, .conteneur_centre, .hauteur_centre, .txt, .centre_hauteur {
+				.static;
+			}
+			.centre_hauteur {
+				height: auto !important;
+				margin-top: 0 !important;
+			}
+			section {height: auto !important;}
+			.visu_full, .plus, .plus2, .bg_triangle, {display: none !important;}
+			.mob_only {display: block;}
+
+			.liste_social {
+				width: 300px;
+				margin: 0 auto;
+				li {
+					margin-left: 0;
+					float: none;
+				}
+			}
+			//Visuels Full pages internes
+			.header_page, .corps_page {
+				.visu_bg {
+					display: none;
+				}
+			}
+			.header_page {
+				overflow: hidden;
+				&.xl {height: auto !important;}
+				.logo_po img {
+					width: 120px;
+				}
+			}
+			.corps_page {
+				.bandeau_nav {
+					display: none;
+				}
+				#ariane_adi {
+					display: none;
+				}
+				h1, .intro {text-align: center;}
+				h1 {
+					font-size: 35px;
+					margin-bottom: 0.3em;
+				}
+				.intro {
+					font-size: 14px;
+					padding: 0 20px;
+				}
+			}
+
+
+
+
+
+
+
+
+
+			//PAGE ACCUEIL//////////////////////////////////////////////////
+			&#page_accueil {
+				.conteneur_corps {
+					top: 0 !important;
+					.rubrique {
+						height: auto !important;
+						&#bg_img {
+							height: 550px !important;
+							background: url(../images/bg_mob.jpg) no-repeat left top;
+							background-size: cover;
+							position: relative;
+							#logo_po_mob {
+								width: 170px;
+								display: block;
+								margin: 0 auto;
+								margin-top: 20px;
+							}
+							.conteneur_btn {
+								display: block;
+								position: absolute;
+								top: 390px;
+								left: 0;
+								right: 0;
+								text-align: center;
+							}
+						}
+						&#section1 {
+							margin-top: -50px !important;
+							background: rgba(0, 0, 0, 0.7);
+							.txt {
+								width: auto;
+								padding: 30px 20px 20px;
+								text-align: center;
+								.conteneur_btn {
+									.btn_bleu_fleche, .btn_bleu_coupe {width: 220px; .border_box;}
+								}
+							}
+						}
+						&#section2 {
+							.bande {
+								height: auto !important;
+								background: none;
+								.static;
+								margin-bottom: 20px;
+								.conteneur_centre {
+									padding: 0 !important;
+									.col_g, .col_d {
+										float: none;
+										.border_box;
+										width: 100%;
+										padding: 10px;
+									}
+									.col_g {background: @bleu;}
+									.col_d {background: @blanc;}
+								}
+							}
+							#formulaires {width: 100% !important; .border_box;}
+							form {
+								width: 270px;
+								margin: 0 auto;
+								.col_1_3 {padding: 0;}
+								input {
+									&#nom, &#nomb {width: 221px;}
+									&#prenom, &#prenomb {width: 201px;}
+									&#email, &#emailb {width: 208px;}
+									&#cp, &#cpb {width: 175px;}
+								}
+							}
+							p.liens {
+								text-align: center;
+								padding: 10px;
+							}
+						}
+						&#section3 {
+							padding: 50px 0;
+							.conteneur_videos {
+								.static;
+								width: auto;
+								margin: 0;
+								li {
+									width: 250px;
+									height: 149px;
+									position: relative;
+									margin: 0 auto;
+									float: none;
+									.vignette {
+										position: relative;
+										width: 100%;
+										height: 100%;
+										a {
+											position: absolute;
+											top: 0;
+											left: 0;
+											right: 0;
+											bottom: 0;
+											padding: 120px 30px 0 10px;
+											background: url(../images/play.png) no-repeat right bottom;
+											color: @blanc;
+											.adiN;
+											font-size: 16px;
+											text-decoration: none;
+										}
+									}
+									&#video1  {
+										.vignette {
+											background: url(../images/xs/Mandanda_normal.jpg) no-repeat left top;
+											&:hover {background-image: url(../images/xs/Mandanda_roll.jpg);}
+										}
+										.conteneur_video {
+											left: 0;
+											top: 0;
+										}
+									}
+									&#video2  {
+										.vignette {
+											background: url(../images/xs/Gignac_normal.jpg) no-repeat left top;
+											&:hover {background-image: url(../images/xs/Gignac_roll.jpg);}
+										}
+										.conteneur_video {
+											right: 0;
+											top: 0;
+										}
+									}
+									&#video3  {
+										.vignette {
+											background: url(../images/xs/Lucas_Mendes.jpg) no-repeat left top;
+											&:hover {background-image: url(../images/xs/Lucas_Mendes_roll.jpg);}
+										}
+										.conteneur_video {
+											left: 0;
+											bottom: 0;
+										}
+									}
+									&#video4  {
+										.vignette {
+											background: url(../images/xs/Morel_normal.jpg) no-repeat left top;
+											&:hover {background-image: url(../images/xs/Morel_roll.jpg);}
+										}
+										.conteneur_video {
+											right: 0;
+											bottom: 0;
+										}
+									}
+								}
+								.conteneur_video.actif {
+									width: 100% !important;
+									height: 100% !important;
+								}
+							}
+						}
+						&#section4 {
+							padding-top: 30px;
+						}
+					}
+				}
+			}
+			//FIN PAGE ACCUEIL/////////////////////////////////////////////////
+
+			//FIN PAGE MERCI//////////////////////////////////////////////////
+			&#page_merci {
+				position: static;
+				
+				#partie_haute {
+					background: url(../images/bg_sombre.jpg) no-repeat center top;
+					background-size: cover;
+				}
+				.conteneur_centre {
+					width: auto;
+				}
+				.contenu {
+					.static;
+					#partie_haute {
+						.inscrip {font-size: 30px;}
+					}
+				}
+				.bande {
+					min-width: initial;
+					background: @blanc;
+					padding: 10px;
+					height: auto;
+					margin-bottom: 20px;
+					.col_g {
+						padding: 0;
+						width: auto;
+						float: none;
+						.titre {font-size: 30px;}
+					}
+					.col_d {
+						float: none;
+						text-align: center;
+					}
+				}
+				.videos {
+					li {
+						float: none;
+						width: 250px;
+						margin: 0 auto;
+					}
+				}
+				.bg_transp {display: none;}
+				.popins_videos  {
+					.conteneur_video {
+						width: 300px;
+						margin-left: -150px;
+						margin-top: -80px;
+						.contenu_video {
+							width: 100%;
+						}
+					}
+				}
+			}
+			//FIN PAGE MERCI//////////////////////////////////////////////////
+
+			//PAGE PRESENTATION//////////////////////////////////////////////////
+			&#page_presentation {
+				.header_page {
+					background: url(../images/bg_presentation_mob.jpg) no-repeat center top;
+					background-size: 100%;
+					.film a {
+						display: none;
+					}
+					.txt {
+						width: 100%;
+						padding-top: 20px;
+						color: @blanc;
+						.titre {
+							font-size: 25px;
+							margin-bottom: 0.5em;
+							text-align: center;
+						}
+						.desc {
+							width: auto;
+							margin-bottom: 2em;
+							padding: 20px 20px 0;
+							text-align: center;
+							line-height: 1.5em;
+						}
+						.conteneur_btn {
+							text-align: center;
+						}
+					}
+					.conteneur_video {
+						.overlay {
+							display: none !important;
+						}
+						.popin_video {
+							.static;
+							margin: 0;
+							width: 100%;
+							height: auto;
+							.close_video {
+								display: none;
+							}
+						}
+
+					}
+				}
+				.corps_page {
+					background: url(../images/bg_social_mob.jpg) repeat right top;
+					background-size: cover;
+				}
+			}
+			//FIN PAGE PRESENTATION//////////////////////////////////////////////////
+
+			//PAGE CHALLENGES//////////////////////////////////////////////////
+			&#page_challenges {
+				.header_page {
+					.txt {
+						.infos_challenge {
+							text-align: left;
+							margin: 0 auto 5em;
+							width: 250px;
+							span{
+								line-height: 22px;
+								height: 22px;
+								width: 202px !important;
+								&.nb_particip {
+									background-image: url(../images/bg_particip_mob.png);
+									width: 234px;
+									padding-left: 47px;
+									top: 6px;
+									left: 52px;
+									font-size: 14px;
+								}
+								&.pre_free, &.pre {
+									background-image: url(../images/bg_free_pre_mob.png);
+									width: 234px;
+									top: 28px;
+									left: 52px;
+								}
+								&.pre {
+									background-image: url(../images/bg_pre_mob.png);
+								}
+							}
+						}
+						.titre {
+							font-size: 35px;
+							margin-bottom: 0.5em;
+							text-shadow: 1px 1px 9px #333;
+						}
+						.sous_titre {
+							font-size: 14px;
+							padding: 0 20px;
+						}
+						.conteneur_btn {
+							margin-bottom: 4em;
+						}
+					}
+					
+				}
+			}
+			//FIN PAGE CHALLENGES//////////////////////////////////////////////////
+
+
+			//PAGE DETAIL CHALLENGE//////////////////////////////////////////////////
+			&#page_challenge_detail {
+				.visu_lot {
+					.static;
+				}
+				.detail_challenge {
+					text-align: center;
+					.titre {
+						text-align: center;
+						margin-top: -30px;
+						.picto {
+							float: none;
+							width: 50px;
+						}
+						h1 {
+							padding: 10px 0;
+						}
+					}
+					.infos {
+					margin-bottom: 1.5em; 
+						> span {
+							font-size: 18px;
+						}
+					}
+					#formchallenge {
+						margin-bottom: 3em;
+					}
+					.bloc_premium {
+						width: auto;
+						form {
+							padding-left: 0;
+							background: none;
+							input {
+								margin: 0 0 20px;
+							}
+						}
+					}
+				}
+			}
+			//FIN DETAIL PAGE CHALLENGES/////////////////////////////////////////////
+			
+
+			//PAGE CLASSEMENT/////////////////////////////////////////////
+			&#page_classement {
+				.onglets {
+					text-align: center;
+					.col_1_2 {
+						margin-bottom: 50px;
+						.select_jeu {
+							.static;
+							margin-top: 0;
+						}
+					}
+					.picto {
+						float: none;
+						margin-right: 0px;
+					}
+					.txt {
+						float: none;
+						width: 100%;
+						.titre {
+							font-size: 25px;
+						}
+					}
+				}
+				#carrousel_classement {
+					width: 250px;
+					margin: 0 auto;
+					margin-bottom: 50px;
+					background: url(../images/socle.png) no-repeat left 230px;
+					.carte {
+						margin: 0 auto;
+					}
+				}
+				.top3 {
+					.conteneur_carte {
+						margin-left: 65px;
+					}
+				}
+			}
+			//FIN PAGE CLASSEMENT/////////////////////////////////////////////
+			
+
+			//PAGE MON COMPTE/////////////////////////////////////////////
+			&#page_mon_compte {
+				.partie_score {
+					.bienvenue, .classements, .conteneur_carte {
+						width: auto;
+						float: none;
+					}
+					.bienvenue {
+						text-align: center;
+						margin-bottom: 30px;
+						span {white-space: nowrap;}
+					}
+					.conteneur_carte {
+						padding-left: 70px;
+						margin: 0 auto;
+						width: 246px;
+					}
+				}
+				.partie_profil {
+					.titre {font-size: 45px;}
+					.col_1_2:first-child {
+						text-align: center;
+						.infos {
+							margin-bottom: 30px;
+						}
+					}
+					.col_1_2:last-child {
+						text-align: center;
+					}
+				}
+				.partie_historique {
+					.titre {font-size: 45px;}
+					.liste_historique li .conteneur {
+						line-height: 35px;
+						font-size: 20px;
+						span {white-space: nowrap;}
+					}
+				}
+			}
+			//FIN PAGE MON COMPTE/////////////////////////////////////////////
+
+		}
+	}
+}

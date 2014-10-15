@@ -1,0 +1,266 @@
+/* ===============================
+   Variables et class dynamiques
+   =============================== */
+
+/*Palette couleur*/
+@noir: #000;
+@blanc: #FFF;
+@bleu: #009ddc;
+@gris: #666;
+@dore: #ba8c58;
+@rouge : #ea3c3c;
+@erreur : #F00;
+
+.css3pie_behavior {
+	behavior: url(javascript/PIE.htc); /*ATTENTION, L'URL est retative par rapport au HTML ou absolue mais sur le même domaine*/
+}
+
+.border-radius (@radius: 5px) {
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+
+	.css3pie_behavior;
+
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	overflow: hidden;
+
+	position: relative; /*Pour un bug sur IE8*/
+	z-index: 1; /*Pour un bug sur IE8*/
+}
+.border-radiuses (@topright: 5px, @bottomright: 5px, @bottomleft: 5px, @topleft: 5px) {
+
+	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
+	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
+
+	.css3pie_behavior;
+
+	-moz-background-clip: padding; 
+	-webkit-background-clip: padding-box; 
+	background-clip: padding-box; 
+	overflow: hidden;
+
+	position: relative; /*Pour un bug sur IE8*/
+	z-index: 1; /*Pour un bug sur IE8*/
+}
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @alpha: 0.5) {
+	@value: @x @y @blur rgba(0, 0, 0, @alpha);
+	box-shadow:         @value;
+	-moz-box-shadow:    @value;
+	-webkit-box-shadow: @value;
+}
+.box-shadow-white (@x: 0px, @y: 3px, @blur: 5px, @alpha: 0.5) {
+	@value: @x @y @blur rgba(255, 255, 255, @alpha);
+	box-shadow:         @value;
+	-moz-box-shadow:    @value;
+	-webkit-box-shadow: @value;
+}
+.box-shadow-inset (@x, @y, @blur, @color) {
+	box-shadow: @x @y @blur @color inset;
+	-moz-box-shadow: @x @y @blur @color inset;
+	-webkit-box-shadow: @x @y @blur @color inset;
+}
+.text-shadow (@x: 0px, @y: 1px, @b: 2px, @color: @gris ) {
+	text-shadow: @x @y @b @color;
+	filter: dropshadow(color=@color, offx=@x, offy=@y);
+}
+.transform (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+	-webkit-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	-moz-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	-o-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	-ms-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+	transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+.wrap () {
+	text-wrap: wrap;
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+.rotate (@rotate: 90deg) {
+	transform: rotate(@rotate);
+	-ms-transform: rotate(@rotate); /* IE 9 */
+	-webkit-transform: rotate(@rotate); /* Safari and Chrome */
+}
+.transition (@t: 0.5s) {
+	transition-duration: @t;
+	-webkit-transition-duration: @t;
+	-moz-transition-duration: @t;
+}
+.opacity (@opacity) {
+	filter:alpha(opacity=@opacity);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=@opacity);
+	opacity: @opacity/100;
+}
+.clearfix {
+	*zoom: 1;
+	&:after {clear: both;content: " ";display: table;}
+	&:before {content: " ";display: table;}
+}
+.border_box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.opacity (@opacity) {
+	filter:alpha(opacity=@opacity);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=@opacity);
+	opacity: @opacity/100;
+}
+.static {
+	position: static !important;
+	left: auto !important;
+	top: auto !important;
+	right: auto !important;
+	bottom: auto !important;
+}
+.sprite (@left:0, @top:0) {
+	background: url(../images/sprite_adi.png) no-repeat @left @top;
+}
+
+
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+/*Fonts*/
+@font-face {
+	font-family: 'adihausdinbold';
+	src: url('../fonts/adihausdin-bold-webfont.eot');
+	src: url('../fonts/adihausdin-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/adihausdin-bold-webfont.woff') format('woff'),
+		 url('../fonts/adihausdin-bold-webfont.ttf') format('truetype'),
+		 url('../fonts/adihausdin-bold-webfont.svg#adihausdinbold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'adihausdinmedium';
+	src: url('../fonts/adihausdin-medium-webfont.eot');
+	src: url('../fonts/adihausdin-medium-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/adihausdin-medium-webfont.woff') format('woff'),
+		 url('../fonts/adihausdin-medium-webfont.ttf') format('truetype'),
+		 url('../fonts/adihausdin-medium-webfont.svg#adihausdinmedium') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'adihausdinregular';
+	src: url('fonts/adihausdin-regular-webfont.eot');
+	src: url('../fonts/adihausdin-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/adihausdin-regular-webfont.woff') format('woff'),
+		 url('../fonts/adihausdin-regular-webfont.ttf') format('truetype'),
+		 url('../fonts/adihausdin-regular-webfont.svg#adihausdinregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'adineue2013bold';
+	src: url('../fonts/adineue2013-bold-webfont.eot');
+	src: url('../fonts/adineue2013-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/adineue2013-bold-webfont.woff') format('woff'),
+		 url('../fonts/adineue2013-bold-webfont.ttf') format('truetype'),
+		 url('../fonts/adineue2013-bold-webfont.svg#adineue2013bold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+.adiN {
+	font-family: 'adineue2013bold';
+	font-weight: normal !important;
+}
+.page_om .colorbox_medium {display: none;}
+.page_om, #colorbox {
+	/* ==========================================================================
+	   Helper classes
+	   ========================================================================== */
+
+	.ir {background-color: transparent;border: 0;overflow: hidden;*text-indent: -9999px;
+		&:before {content: "";display: block;width: 0;height: 150%;}
+	}
+	.hidden {display: none !important;visibility: hidden;}
+	.visuallyhidden {border: 0;clip: rect(0 0 0 0);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}
+	.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {clip: auto;height: auto;margin: 0;overflow: visible;position: static;width: auto;}
+	.invisible {visibility: hidden;}
+	.clearfix {
+		*zoom: 1;
+		&:after {clear: both;content: " ";display: table;}
+		&:before {content: " ";display: table;}
+	}
+
+
+	html,button,input,select,textarea {color: #222;}
+	body {font-size: 1em;line-height: 1.4;}
+	::-moz-selection {background: #b3d4fc;text-shadow: none;}
+	::selection {background: #b3d4fc;text-shadow: none;}
+	hr {display: block;height: 1px;border: 0;border-top: 1px solid #ccc;margin: 1em 0;padding: 0;}
+	img {vertical-align: middle; max-width: 100%; width: auto; height: auto;}
+	fieldset {border: 0;margin: 0;padding: 0;}
+	textarea {resize: vertical;}
+	.chromeframe {margin: 0.2em 0; background: #ccc;color: #000;padding: 0.2em 0;}
+	.placeholder { color: #aaa; } /* All browsers */
+	::-webkit-input-placeholder { color: #aaa; } /* WebKit */
+	:-moz-placeholder { color: #aaa; } /* Firefox 4+ */
+
+	#debug {background-color: @gris;} /*debug EzPublish*/
+
+	/*STYLES GENERIQUES*/
+	.out {position: absolute;left: -50000px !important;top: -50000px !important;}
+	.center {text-align: center;}
+	.float_l {float: left;}
+	.float_r {float: right;}
+	.ta_l {text-align: left;}
+	.ta_r {text-align: right;}
+	.valignmiddle {vertical-align: middle;}
+	.smaller {font-size: smaller;}
+	.larger {font-size: larger;}
+	.clear {clear: both !important; height:0 !important; line-height:0 !important;font-size:0 !important;overflow:hidden !important; width: 100% !important; margin: 0 !important; padding: 0 !important;}
+	.souligne {text-decoration: underline;}
+	.gras {font-weight: bold;}
+	.illu_max { width: 100%;display:block; height: auto;}
+	.relatif { position: relative;}
+	.mb_50 {margin-bottom: 50px;}
+	.pt_1em {padding-top: 2em;}
+	h1, h2, h3, h4, h5 {margin-top: 0;}
+	button {overflow: visible; display: inline-block;background-color: transparent; border: none;}
+	a, img, label {display: inline-block;}
+	p, ul, ol, table {margin: 0 0 1em 0;padding: 0;}
+	li {list-style: none;}
+	pre {overflow: auto;color: white;padding: 0;font-family: Menlo, Monaco, monospace;-moz-tab-size: 2;-o-tab-size: 2;tab-size: 2;-ms-word-break: normal;word-break: normal;word-break: normal;-webkit-hyphens: none;-moz-hyphens: none;-ms-hyphens: none;hyphens: none;position: relative;}
+	pre code {font-family: Menlo, Monaco, monospace;background: none;padding: 15px;white-space: pre;overflow: auto;display: block;}
+	.row {
+		.clearfix;
+		> * {
+			float: left;
+			&:last-child > .contenu{padding-right: 0;}
+			> .contenu {padding-right: 5%;}
+		}
+		> div.float_r {
+		  float: right;
+	   }
+	}
+
+	.col_1_2 {width: 100%/2;}
+
+	.col_1_3 {width: 100%/3;}
+	.col_2_3 {width: 100%/3*2;}
+
+	.col_1_4 {width: 100%/4;}
+	.col_2_4 {width: 100%/4*2;}
+	.col_3_4 {width: 100%/4*3;}
+
+	.col_1_5 {width: 100%/5;}
+	.col_2_5 {width: 100%/5*2;}
+	.col_3_5 {width: 100%/5*3;}
+	.col_4_5 {width: 100%/5*4;}
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 1000px;
+}

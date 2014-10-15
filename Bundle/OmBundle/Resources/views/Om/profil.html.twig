@@ -1,0 +1,188 @@
+{% extends 'AdidasOmBundle::layout.html.twig' %}
+{% block content %}
+{% set user = app.session.get('userInfo') %}
+<!-- CORPS -->
+<div class="page_om" id="page_mon_compte">
+<div class="mob_only" id="header_mob">
+    <img src="{{asset('bundles/adidasom/images/logo_adidas_mob.gif')}}" alt="Adidas">
+    <!-- Menu mobile -->
+    <div class="menu_mob">
+        <a href="#"><img src="{{asset('bundles/adidasom/images/picto_menu_mob.png')}}" alt="Menu"></a>
+        <ul>
+                <li><a href="{{ path('adidas_challenges') }}">Challenges</a></li>
+                <li><a href="{{path('adidas_classement')}}">Classements</a></li>
+                <li><a href="{{path('adidas_om_profil', {'id': member.id})}}" class="actif">Mon compte</a></li>
+        </ul>
+    </div>
+    <!-- Menu mobile -->
+</div>
+<div class="header_page xs" style="background: url({{asset('bundles/adidasom/images/visu_h_compte.jpg')}}) no-repeat center bottom">
+    <!-- Image de fond -->
+    <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_h_compte.jpg')}}" alt="Adidas">
+    <!-- /Image de fond -->
+
+    <div class="conteneur_centre">
+            <div class="logo_po"><img src="{{asset('bundles/adidasom/images/logo_po_head.png')}}" alt="Peuple olympien"></div>
+    </div>
+</div>
+    <div class="corps_page" style="background: url({{asset('bundles/adidasom/images/visu_b_compte.jpg')}}) no-repeat center top">
+        <!-- Nav Adi -->
+        <div class="bandeau_nav">
+            <div class="conteneur_centre">
+                <ul>
+                    <li><a href="{{ path('adidas_challenges') }}">Challenges</a></li>
+                    <li><a href="{{path('adidas_classement')}}">Classements</a></li>
+                    <li><a href="{{path('adidas_om_profil', {id: member.id})}}" class="actif">Mon compte</a></li>
+                </ul>
+                <span class="trait"></span>
+            </div>
+        </div>
+        <!-- /Nav Adi -->
+        <!-- Image de fond -->
+        <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_b_compte.jpg')}}" alt="Adidas">
+        <!-- /Image de fond -->
+        <ul id="ariane_adi" class="conteneur_centre">
+            <li><a href="{{ path('adidas_om_homepage') }}">Accueil</a></li>
+            <li><span>Mon compte</span></li>
+        </ul>
+        <!-- Mon compte -->
+        <div class="conteneur_centre">
+            <!-- SCORE -->
+            <div class="partie_score">
+                <div class="bienvenue">
+                    <p class="titre">Bienvenue <span>{% if user['prenom'] is defined %}{{user['prenom']}}{%endif%}</span></p>
+                    <p class="desc">La partie continue... Relève tous nos défis pour booster ton score et assure-toi la victoire !</p>
+                </div>
+                <div class="classements">
+                    <div class="points">{{points}} <span>points</span></div>
+                    <div class="general">
+                        <p class="intitule"><img src="{{asset('bundles/adidasom/images/picto_classement_general.png')}}" alt=""> classement général</p>
+                        <p class="position">{{class}} <span>/ {{count_member}}</span></p>
+                    </div>
+                    <!--
+                    <div class="amis">
+                        <p class="intitule"><img src="{#{asset('bundles/adidasom/images/picto_classement_amis.png')}#}" alt=""> parmi tes amis</p>
+                        <p class="position">4 <span>/ 140</span></p>
+                    </div>
+                    -->
+                    <div class="partage">
+                        <!-- Si logué -->
+                        <!--<p>partage ton score <a href="#"><img src="{#{asset('bundles/adidasom/images/picto_partage_fb.png')}#}" alt="sur Facebook"></a> <a href="#"><img src="images/picto_partage_twit.png" alt="sur Twitter"></a></p>-->
+                        <!-- /Si logué -->
+                            <!-- Si non logué -->
+                            <p class="txt">Modifier ta photo de profil <br>en te connectant à Twitter !</p>
+                            <p class="conteneur_btn"><a href="#" class="btn_bleu_coupe popinConnexion">Connexion</a> </p>
+                            <!-- /Si non logué -->
+                            <!-- Si non logué -->
+                            <p class="txt">Modifier ta photo de profil <br>en te connectant à Instagram !</p>
+                            <p class="conteneur_btn"><a href="{{path('adidas_om_profil', {id:member.id, cnx:1})}}" class="btn_bleu_coupe popinConnexion">Connexion</a> </p>
+                            <!-- /Si non logué -->
+                    </div>
+                </div>
+                <div class="conteneur_carte">
+                    <div class="carte bleu">
+                        <div class="reflet"></div>
+                        <div class="carte_seule">
+                            <img class="photo" src="{% if member.picture is defined%}{{member.picture}}{%endif%}" alt="">
+                            <div class="deco">
+                                    <p class="nom">{{member.name}}</p>
+                                    <p class="points">{{points}} pts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /SCORE -->
+            <!-- PROFIL -->
+            <div class="partie_profil pre"><!-- classe pre ou free -->
+                <p class="titre">ton profil <span>freemium</span></p>
+                <p class="modifier"><a href="{{path('adidas_om_profil_edit', {id : member.id})}}" class="popinModif">Modifier</a></p>
+                <div class="row">
+                    <div class="col_1_2">
+                        <span class="infos"><span>{% if user['prenom'] is defined %}{{user['prenom']}}{%endif%} {% if user['nom'] is defined %}{{user['nom']}}{%endif%}</span> | <span>{% if user['email'] is defined %}{{user['email']}}{%endif%}</span> </span>
+                    </div>
+                    <div class="col_1_2">
+                        {%if member.jerseyId is defined  and member.active is defined  %}
+                            {% if member.jerseyId is empty  and member.active is empty %}
+                                <!-- Si Freemium -->
+                                <p><a href="{{path('adidas_om_profil_premium', {id: member.id})}}" class="btn_blanc_fleche popinPremium">passe <span>premium</span></a> </p>
+                                <p><a href="#" class="btn_blanc_fleche">achète le maillot</a> </p>
+                                <!-- /Si Freemium -->
+                             {%else%}
+                                <!-- Si Premium -->
+                                <p><a href="#" class="btn_blanc_fleche">découvre la nouvelle collection om</a> </p>
+                                <!-- /Si Premium -->
+                            {%endif%}
+                        {%elseif member.jerseyId is not defined  or member.active is  defined %}
+                                {% if member.active is empty%}
+                                    <!-- Si Freemium -->
+                                    <p><a href="{{path('adidas_om_profil_premium', {id: member.id})}}" class="btn_blanc_fleche popinPremium">passe <span>premium</span></a> </p>
+                                    <p><a href="#" class="btn_blanc_fleche">achète le maillot</a> </p>
+                                    <!-- /Si Freemium -->
+                                {%else%}
+                                    <!-- Si Premium -->
+                                    <p><a href="#" class="btn_blanc_fleche">découvre la nouvelle collection om</a> </p>
+                                    <!-- /Si Premium -->
+                                {%endif%}
+                        {%elseif member.jerseyId is  defined  and member.active is  not defined %}
+                               {%if member.jerseyId is empty %}
+                                    <!-- Si Freemium -->
+                                    <p><a href="{{path('adidas_om_profil_premium', {id: member.id})}}" class="btn_blanc_fleche popinPremium">passe <span>premium</span></a> </p>
+                                    <p><a href="#" class="btn_blanc_fleche">achète le maillot</a> </p>
+                                    <!-- /Si Freemium -->
+                               {%else%}
+                                    <!-- Si Premium -->
+                                    <p><a href="#" class="btn_blanc_fleche">découvre la nouvelle collection om</a> </p>
+                                    <!-- /Si Premium -->
+                               {%endif%}
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+            <!-- /PROFIL -->
+            <!-- HISTORIQUE -->
+            <div class="partie_historique">
+                <p class="titre">historique de jeu</p>
+                {%if user_challenge is not empty%}
+                    <!-- Si historique -->
+                    <p class="sous_titre">Tes dernières interactions et le calcul de tes points !</p>
+                        <ul class="liste_historique">
+                            {% for challenge in user_challenge %}
+                                <li>
+                                    <span class="conteneur">
+                                        <a href="{{path('adidas_challenge', {'id': challenge.id})}}">
+                                            <span class="illu">
+                                                <img class="picto" src="{{asset('bundles/adidasom/images/picto_coeur.png')}}" alt="">
+                                                <img class="type" src="{{asset('bundles/adidasom/images/type_fb.png')}}" alt="">
+                                            </span>
+                                            {{challenge.challenge}}
+                                        </a>
+                                        <span class="separateur"></span>
+                                        <span class="challenge">{{challenge.type}}</span>
+                                        <span class="separateur"></span>
+                                        <span class="points">{%if challenge.s is not empty%}{{challenge.s}}{%else%}0{%endif%}  pts</span>
+                                    </span>
+                                </li>
+                            {%endfor%}
+                        </ul>
+                    <!-- /Si historique -->
+                {%else%}
+                    <!-- /Si aucun historique -->
+                    <p class="sous_titre">Tu ne participes à aucun jeu actuellement. Découvre nos nombreux challenges pour faire le plein de cadeaux OM !</p>
+                    <p class="contneur_btn">
+                            <a href="{{path('adidas_challenges')}}" class="btn_bleu_coupe xl">Voir les jeux du moment</a>
+                    </p>
+                    <!-- /Si aucun historique -->
+                {%endif%}
+            </div>
+            <!-- /HISTORIQUE -->
+        </div>
+        <!-- /Mon compte -->
+    </div>
+
+    <!-- Ancre top -->
+    <div class="ancre_top"></div>
+    <!-- Ancre top -->
+</div>
+<!-- /CORPS -->
+{% endblock %}

@@ -1,0 +1,311 @@
+
+//PAGE OM
+background-color: @noir;
+&#page_accueil {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	.conteneur_corps {
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		.plus {
+			content:'';
+			position: absolute;
+			z-index: 10000;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../images/bg_transp_noir_70.png) repeat left top;
+			display: none;
+		}
+		.plus2 {
+			content:'';
+			position: absolute;
+			width: 443px;
+			height: 500px;
+			background: url(../images/logo_om_xl.png) no-repeat center center;
+			z-index: 10000;
+			left: 50%;
+			top: -150%;
+			margin-top: -250px;
+			margin-left: -222px;
+		}
+		#bg_img, #section1 {
+			top: 0;
+		}
+		#bg_img {
+			.conteneur_btn {display: none;}
+		}
+		.rubrique {
+			position: absolute;
+			left: 0;
+			top: 100%;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			ul.reperes li {
+				position: absolute;
+				left: 0;
+				height: 10%;
+				width: 5%;
+				border-top: 1px solid green;
+			}
+
+			&#section1 {
+				.txt {
+					position: fixed;
+					.touch & {
+						position: absolute;
+					}
+					p {line-height: 1.5em;}
+					right: 20px;
+					bottom: 20px;
+					width: 230px;
+					color: #FFF;
+					.inscrip {
+						text-transform: uppercase;
+						font: 15px 'adihausdinbold', Arial;
+					}
+					.conteneur_btn {
+						padding-top: 10px;
+						.btn_bleu_fleche, .btn_bleu_coupe {
+							width: 190px;
+						}
+						.btn_bleu_coupe {
+							width: 185px;
+						}
+					}
+				}
+				.bg_triangle {
+					position: absolute;
+					left: 100%;
+					bottom: 0;
+					width: 400%;
+					height: 400%;
+					margin-left: -495px;
+					background: url(../images/bg_transp_noir_70.png) repeat left top;
+					.no-csstransforms & {
+						left: 0;
+						width: 100%;
+						height: 100%;
+						margin-left: 0;
+						background: url(../images/triangle.png) no-repeat right bottom;
+					}
+				}
+			}
+
+			&#section2 {
+				.no-csstransforms & { 
+					background: url(../images/bg_transp_noir_70.png) repeat left top;
+				}
+				color: @blanc;
+				a {color: @blanc; text-decoration: underline;}
+				.bande {
+					background: url(../images/bg_bande.png) repeat center top;
+					height: 148px;
+					margin-bottom: 20px;
+					.clearfix;
+					p {margin-bottom: 0;}
+					.col_g, .col_d {
+						float: left;
+						width: 50%;
+						.border_box;
+						padding: 25px 30px;
+						text-align: center;
+						.titre {
+							.adiN;
+							font-size: 37px;
+							margin-bottom: 5px;
+						}
+					}
+					.col_d {
+						color: @dore;
+					}
+				}
+				.centre_hauteur {
+					height: 250px;
+					margin-top: -50px;
+				}
+				#formulaires {
+					width: 880px;
+				}
+				.onglets {
+					.clearfix;
+					li {
+						float: left;
+						margin-right: 5px;
+						a {
+							padding: 5px 0;
+							margin-right: 10px;
+							color: @blanc;
+							.opacity (50);
+							text-transform: uppercase;
+							text-decoration: none;
+							span {
+								padding: 0 5px;
+								border-left: 2px solid @bleu;
+							}
+							&.actif {
+								.opacity (100);
+								background-color: @blanc;
+								color: @noir;
+								cursor: default;
+								border-left: 7px solid @noir;
+								span {
+									border: none;
+								}
+							}
+						}
+					}
+					
+				}
+				.contenu_onglet.actif .ligne.disabled {
+					.opacity (20);
+					.transition (0.5s);
+				}
+				form {
+					.col_1_3, .col_2_3 {
+						.border_box;
+						padding-right: 25px;
+					}
+				}
+				p.liens {
+					color: #999;
+					a {color: #999;}
+					
+				}
+			}
+			&#section3 {
+				.conteneur_videos {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					width: 972px;
+					margin: -289px 0 0 -486px;
+					.clearfix;
+					li {
+						float: left;
+						width: 50%;
+						width: 486px;
+						height: 289px;
+						position: relative;
+						.vignette {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							z-index: 10;
+							a {
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								padding: 250px 50px 0 25px;
+								background: url(../images/play.png) no-repeat right bottom;
+								color: @blanc;
+								.adiN;
+								font-size: 20px;
+								text-decoration: none;
+							}
+						}
+						&.disabled .masque {
+							position: absolute;
+							left: 0;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							background: url(../images/bg_transp_noir_70.png) repeat  left top;
+							z-index: 20;
+						}
+						.conteneur_video {
+							position: absolute;
+							width: 0;
+							height: 0;
+							z-index: 10;
+							.close_video {
+								background: @blanc url(../images/popin_fermer.png) no-repeat center center;
+								position: absolute;
+								right: -20px;
+								top: -20px;
+								display: none;
+								text-indent: -5000px;
+								width: 20px;
+								height: 20px;
+								.touch & {
+									width: 40px;
+									height: 40px;
+									right: 0px;
+									top: -40px;
+								}
+							}
+							.contenu_video {
+								position: relative;
+								width: 100%;
+								height: 100%;
+								background-color: @noir;
+								margin-left: -50000px;
+							}
+							&.actif {
+								z-index: 30;
+								.contenu_video {
+									margin-left: 0;
+								}
+							}
+						}
+						&#video1  {
+							.vignette {
+								background: url(../images/Mandanda_normal.jpg) no-repeat left top;
+								&:hover {background-image: url(../images/Mandanda_roll.jpg);}
+							}
+							.conteneur_video {
+								left: 0;
+								top: 0;
+							}
+						}
+						&#video2  {
+							.vignette {
+								background: url(../images/Gignac_normal.jpg) no-repeat left top;
+								&:hover {background-image: url(../images/Gignac_roll.jpg);}
+							}
+							.conteneur_video {
+								right: 0;
+								top: 0;
+							}
+						}
+						&#video3  {
+							.vignette {
+								background: url(../images/Lucas_Mendes.jpg) no-repeat left top;
+								&:hover {background-image: url(../images/Lucas_Mendes_roll.jpg);}
+							}
+							.conteneur_video {
+								left: 0;
+								bottom: 0;
+							}
+						}
+						&#video4  {
+							.vignette {
+								background: url(../images/Morel_normal.jpg) no-repeat left top;
+								&:hover {background-image: url(../images/Morel_roll.jpg);}
+							}
+							.conteneur_video {
+								right: 0;
+								bottom: 0;
+							}
+						}
+						
+					}
+				}
+			}
+			&#section4 {
+				.pave_scroll {
+					height: 100%;
+					overflow: auto;
+				}
+			}
+		}
+	}
+}

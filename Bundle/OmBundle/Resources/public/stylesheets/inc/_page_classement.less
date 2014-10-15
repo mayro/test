@@ -1,0 +1,74 @@
+
+&#page_classement {
+	.onglets {
+		position: relative;
+		z-index: 10;
+		font-size: 14px;
+		.lt-ie9 & {margin-bottom: 30px;} //////////CORREC IE8
+		.col_1_2 {
+			.clearfix;
+			position: relative;
+			&.general {
+				width: 100%;
+				position: relative;
+			}
+			&.disabled {
+				.opacity (30);
+				:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 1;
+				}
+			}
+			.picto {
+				float: left;
+				margin-right: 10px;
+			}
+			.txt {
+				float: left;
+				width: 390px;
+				.titre {
+					.adiN;
+					font-size: 34px;
+					margin-bottom: 0.2em;
+					a {color: @blanc; text-decoration: none;}
+				}
+			}
+			.select_jeu {
+				position: absolute;
+				right: 0;
+				top: 50%;
+				margin-top: -15px;
+			}
+		}
+	}
+	#carrousel_classement {
+		margin-bottom: 50px;
+		background: url(../images/socle.png) no-repeat left 230px;
+	}
+	.top3 {
+		padding-top: 30px;
+		margin-bottom: 100px;
+		.col_1_3 {
+			.titre {
+				.adiN;
+				font-size: 50px;
+				line-height: 0.9em;
+			}
+			&.premier {
+				.titre span {color: @dore;}
+			}
+			&.deuxieme {
+				.titre span {color: @bleu;}
+			}
+			&.troisieme {
+				.titre span {color: @rouge;}
+			}
+			.carte {margin: 0 auto;}
+		}
+	}
+}

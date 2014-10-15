@@ -1,0 +1,151 @@
+{% extends 'AdidasOmBundle::layout.html.twig' %}
+{% block content%}
+    <!-- CORPS -->
+    <div class="page_om" id="page_challenge_detail">
+        <div class="mob_only" id="header_mob">
+            <img src="{{asset('bundles/adidasom/images/logo_adidas_mob.gif')}}" alt="Adidas">
+            <!-- Menu mobile -->
+            <div class="menu_mob">
+                <a href="#"><img src="{{asset('bundles/adidasom/images/picto_menu_mob.png')}}" alt="Menu"></a>
+                <ul>
+                    <li><a href="{{ path('adidas_challenges') }}" class="actif">Challenges</a></li>
+                    <li><a href="{{path('adidas_classement')}}">Classements</a></li>
+                    <li><a href="{{path('adidas_om_profil',{'id': app.session.get('user')})}}">Mon compte</a></li>
+                </ul>
+            </div>
+            <!-- Menu mobile -->
+        </div>
+        <div class="header_page xs" style="background: url({{asset('bundles/adidasom/images/visu_h_challenge.jpg')}}) no-repeat center bottom">
+            <!-- Image de fond -->
+            <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_h_challenge.jpg')}}" alt="Adidas">
+            <!-- /Image de fond -->
+            <div class="conteneur_centre">
+                <div class="logo_po"><img src="{{asset('bundles/adidasom/images/logo_po_head.png')}}" alt="Peuple olympien"></div>
+            </div>
+        </div>
+        <div class="corps_page" style="background: url({{asset('bundles/adidasom/images/visu_b_challenge.jpg')}}) no-repeat center top">
+            <!-- Nav Adi -->
+            <div class="bandeau_nav">
+                <div class="conteneur_centre">
+                    <ul>
+                        <li><a href="{{ path('adidas_challenges') }}" class="actif">Challenges</a></li>
+                        <li><a href="{{path('adidas_classement')}}">Classements</a></li>
+                        <li><a href="{{path('adidas_om_profil', {'id': app.session.get('user')})}}">Mon compte</a></li>
+                    </ul>
+                    <span class="trait"></span>
+                </div>
+            </div>
+            <!-- /Nav Adi -->
+            <!-- Image de fond -->
+            <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_b_challenge.jpg')}}" alt="Adidas">
+            <!-- /Image de fond -->
+            {% for chal in challenge %}
+            <ul id="ariane_adi" class="conteneur_centre">
+                <li><a href="{{ path('adidas_om_homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('adidas_challenges') }}">Challenges</a></li>
+                <li><span>{{chal.nameChallenge}}</span></li>
+            </ul>
+            <!-- Detail Challenge -->
+            <div class="detail_challenge conteneur_centre">
+                <div class="titre">
+                    <img class="picto" src="{{asset('bundles/adidasom/images/picto_coeur.png')}}" alt="">
+                    <h1>{{chal.nameChallenge}}</h1>
+                </div>
+                <div class="infos">
+                    <span class="permananent">{{chal.typeChallenge}}</span>
+                    {% if chal.typeChallenge == 'permanent' %}
+                        <span class="ouvert">ouvert à tous</span>
+                    {% elseif chal.typeChallenge == 'évènementiel' %}
+                        <span class="date">{{chal.dateDebut|localizeddate('long', 'none', 'fr')~' - '~chal.dateFin|localizeddate('long', 'none', 'fr') }}</span> <span class="ouvert_prem">ouvert aux premiums</span>
+                    <!--<span class="date">26 février - 12 avril</span> <span class="ouvert_prem">ouvert aux premiums</span>
+                    <span class="termine">challenge terminé</span> <span class="ferme">fermé</span>-->
+                   {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col_1_2">
+                                {% if publish is null and getPartcipChallenge(chal.id,app.session.get('user')) is  empty%}
+                                    <div class="desc">
+                                        <a href="{{ asset('bundles/adidasom/docs/REGLEMENT.pdf') }}" target="_blank">reglement</a>
+                                    </div>
+                                    <form id="formchallenge" method="post" action="{{ url('adidas_challenge', {'id':chal.id, 'particip':1}) }}">
+                                        <p class="erreur"></p>
+                                        {%if chal.typeReseau == 'instagram' %}
+                                             <p class="ligne"><input type="checkbox" id="reglement" name="reglement"><label for="reglement">J'accepte le <a href="{{ asset('bundles/adidasom/docs/REGLEMENT.pdf') }}" target="_blank">règlement du jeu</a></label></p>
+                                            <p><button type="submit" class="btn_bleu_fleche insta">Participer au jeu</button></p>
+                                        {%elseif chal.typeReseau == 'twitter'%}
+                                            <p class="ligne"><input type="checkbox" id="reglement" name="reglement"><label for="reglement">J'accepte le <a href="{{ asset('bundles/adidasom/docs/REGLEMENT.pdf') }}" target="_blank">règlement du jeu</a></label></p>
+                                            <p><button type="submit" class="btn_bleu_fleche twit">Participer au jeu</button></p>
+                                            <!--<p><button type="submit" class="btn_bleu_fleche fb">Participer au jeu</a></button>-->
+                                        {%elseif chal.typeReseau == 'vide'%}
+                                            <p class="ligne"><input type="checkbox" id="reglement" name="reglement"><label for="reglement">J'accepte le <a href="{{ asset('bundles/adidasom/docs/REGLEMENT.pdf') }}" target="_blank">règlement du jeu</a></label></p>
+                                            <p><button type="submit" class="btn_bleu_fleche vide">Participer au jeu</button></p>
+                                            <!--<p><button type="submit" class="btn_bleu_fleche fb">Participer au jeu</a></button>-->
+                                        {%endif%}
+                                    </form>
+                                {%elseif publish is not null %}
+                                    {% if chal.typeReseau == 'twitter'%}
+                                        <div class="desc">vous avez bien participé sur Twitter</div>
+                                    {%elseif chal.typeReseau == 'instagram'%}
+                                        <div class="desc">Tu es bien connecté à Instagram.
+        Tu peux dès maintenant participer au jeu en publiant une photo ou une vidéo sur Instagram via ton smartphone ou ta tablette avec le hashtag #{{chal.htag}}. </div>
+                                    {%elseif chal.typeReseau == 'vide'%}
+                                        <div class="desc">Tu es bien participé.
+                                    {%endif%}
+                                 {%else%}
+                                    vous avez deja participé .
+                                {%endif%}
+                                        
+                        {%if chal.classement is not empty%}
+                            <p><a class="btn_bleu_coupe" href="#">Voir le classement</a></p>
+                        {%endif%}
+                    </div>
+                    <img class="visu_lot" src="{{chal.dotation}}" alt="">
+                </div>
+                <!-- Mode premium -->
+                <div class="bloc_premium">
+                    <form id="form_premium" method="post" action="{{path('adidas_om_profil_premium', {'id':  app.session.get('user')})}}" class="ligne">
+                        <label for="code">Entre ici le numéro inscrit sur l ’étiquette de ton maillot pour gagner encore plus de cadeaux !</label>
+                        <input type="text" id="code" name="code"> <button type="submit" class="btn_bleu_coupe">Valider</button>
+                    </form>
+                    <!--<p class="bravo">Tu es maintenant PREMIUM</p>-->
+                </div>
+                <!-- /Mode premium -->
+            </div>
+            <!-- /Detail Challenge -->
+            {% endfor %}
+            <!-- Fil social -->
+            <div class="conteneur_centre xs">
+                <div class="conteneur_twit">
+                        <ul class="liste_social" id="liste_social_hp">
+                            {% for post in posts%}
+                                <li class="item post">
+                                    {%if post.0.source == 'instagram'%}
+                                        <div class="visu"><img src="{{post.0.image}}" alt=""></div>
+                                    {%endif%}
+                                    <div class="txt">
+                                        <p class="pseudo">@{{ post.0.nameMember}}</p>
+                                        <p class="desc">{{ post.0.comment}}</p>
+                                        <p class="hash">{{'#'~post.htag}}</p>
+                                        <p class="date">Posté il y a {{timeLeft(post.0.createdAt)}}</p>
+                                    </div>
+                                </li>
+                                {%endfor%}
+                        </ul>
+                </div>
+            </div>
+            <!-- /Fil social -->
+        </div>
+        <!-- Ancre top -->
+        <div class="ancre_top"></div>
+        <!-- Ancre top -->
+    </div>
+    <!-- /CORPS -->
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/main.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/jquery.colorbox.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/imagesloaded.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/mediaelement-and-player.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/isotope.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/challenge.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/partage_social.min.js')}}"></script>
+{%endblock%}

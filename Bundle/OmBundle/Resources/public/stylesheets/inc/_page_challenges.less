@@ -1,0 +1,189 @@
+
+&#page_challenges {
+	.header_page {
+		height: 485px;
+		.txt {
+			.infos_challenge {
+				text-align: center;
+				.contenu {
+					position: relative;
+					height: 61px;
+				}
+				img {position: relative; z-index: 1;}
+				span{
+					display: inline-block;
+					position: absolute;
+					top: 19px;
+					.border_box;
+					&.nb_particip {
+						background: url(../images/bg_particip.png) no-repeat left center;
+						width: 234px;
+						height: 25px;
+						line-height: 25px;
+						font-size: 16px;
+						text-transform: uppercase;
+						padding-left: 60px;
+						right: 56px;
+					}
+					&.pre_free, &.pre {
+						background: url(../images/bg_free_pre.png) no-repeat left center;
+						width: 234px;
+						height: 25px;
+						line-height: 25px;
+						font-size: 16px;
+						text-transform: uppercase;
+						padding-left: 60px;
+						left: 56px;
+					}
+					&.pre {
+						background: url(../images/bg_pre.png) no-repeat left center;
+					}
+				}
+			}
+			.titre {
+				.adiN;
+				font-size: 124px;
+				text-align: center;
+				margin-bottom: 0;
+				text-shadow: 1px 1px 9px #333;
+			}
+			.sous_titre {
+				font-size: 18px;
+				text-align: center;
+			}
+			.conteneur_btn {
+				text-align: center;
+				padding-top: 2em;
+				.btn_bleu_fleche {
+					font-size: 20px;
+				}
+			}
+		}
+		
+	}
+}
+
+&#page_challenge_detail {
+	.detail_challenge {
+		.titre {
+			position: relative;
+			.picto {
+				position: absolute;
+				left: -75px;
+				top: 10px;
+			}
+			@media only screen and (max-width: 1280px) {
+				.clearfix;
+				.picto {
+					.static;
+					float: left;
+					margin-right: 20px;
+				}
+			}
+		}
+		.infos {
+			> span {
+				display: inline-block;
+				margin-right: 20px;
+				padding-left: 25px;
+				position: relative;
+				.adiN;
+				font-size: 24px;
+				&:before {
+					content: '';
+					background: url(../images/sprite_statut_challenge.png) no-repeat left top;
+					width: 14px;
+					height: 18px;
+					position: absolute;
+					left: 0;
+					top: 50%;
+					margin-top: -9px;
+				}
+				&.permanent {
+					&:before {background-position: 0 0;}
+				}
+				&.date {
+					&:before {background-position: 0 -18px;}
+				}
+				&.termine {
+					&:before {background-position: 0 -36px;}
+				}
+				&.ouvert, &.ouvert_pre, &.ferme  {
+					&:before {width: 16px;}
+				}
+				&.ouvert {
+					&:before {background-position: -14px 0;}
+				}
+				&.ouvert_pre {
+					&:before {background-position: -14px -18px;}
+				}
+				&.ferme {
+					&:before {background-position: -14px -36px;}
+				}
+			}
+		}
+		.row {
+			position: relative;
+			.col_1_2 {
+				padding-top: 20px;
+				font-size: 16px;
+				padding-right: 9%;
+				.border_box;
+				min-height: 403px;
+				a {
+					color: @blanc;
+				}
+				input {
+					display: inline-block;
+					margin-right: 5px;
+				}
+			}
+			.visu_lot {
+				position: absolute;
+				right: -80px;
+				top: 0;
+				@media only screen and (max-width: 1280px) {
+					right: 0px;
+					max-width: 55%;
+				}
+			}
+		}
+		.bloc_premium {
+			.border_box;
+			width: 650px;
+			border-bottom: 1px solid @blanc;
+			padding-bottom: 50px;
+			margin: 30px auto 50px;
+			font-size: 16px;
+			form {
+				background: url(../images/etiquette_premium.png) no-repeat left bottom;
+				padding-left: 252px;
+				label {
+					display: block;
+					margin-bottom: 1em;
+					color: @bleu;
+				}
+				input {
+					background-color: @noir;
+					border-color: @noir;
+					color: @dore;
+					height: 37px;
+					line-height: 37px;
+					font-size: 16px;
+					display: inline-block;
+					margin-right: 8px;
+					text-transform: uppercase;
+					width: 280px;
+				}
+				button {
+					width: 100px;
+				}
+			}
+			.bravo {
+				.adiN;
+				font-size: 45px;
+				text-align: center;
+			}
+		}
+	}
+}

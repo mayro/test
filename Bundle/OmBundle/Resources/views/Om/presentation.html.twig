@@ -1,0 +1,68 @@
+{% extends 'AdidasOmBundle::layout.html.twig' %}
+{% block content %}
+<!-- CORPS -->
+<div class="page_om" id="page_presentation">
+    <div class="mob_only" id="header_mob">
+        <img src="{{asset('bundles/adidasom/images/logo_adidas_mob.gif')}}" alt="Adidas">
+    </div>
+    <div class="header_page xl">
+        <!-- Image de fond -->
+        <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_h_presentation.jpg')}}" alt="Adidas">
+        <!-- /Image de fond -->
+        <div class="conteneur_centre">
+            <div class="logo_po"><img src="{{asset('bundles/adidasom/images/logo_po_head.png')}}" alt="Peuple olympien"></div>
+            <div class="txt">
+                <p class="titre">aux armes, olympien !</p>
+                <!-- Video -->
+                <div class="conteneur_video">
+                    <div class="overlay"></div>
+                    <div class="popin_video">
+                        <a href="#" class="close_video">Fermer</a>
+                        <div class="contenu_video">
+                            <video class="classique" width="972" height="578" poster="{{asset('bundles/adidasom/videos/intro.jpg')}}">
+                                <source type="video/mp4" src="{{asset('bundles/adidasom/videos/intro.mp4')}}" />
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Video -->
+                <div class="desc">
+                    <p>Relève tous les challenges et deviens le plus grand supporter de l'OM sur les réseaux sociaux pour faire le plein de cadeaux ! <br>
+                    <strong>Places VIP, rencontre avec les joueurs, accès aux évènements privés…</strong></p>
+
+                    <p>Inscris-toi vite et défends les couleurs de Marseille pour gagner des expériences exclusives à vivre avec l'équipe et peut-être 3 ans d'abonnement au Vélodrome !</p>
+                </div>
+                <p class="conteneur_btn">
+                    <a href="#" class="btn_bleu_fleche">Rejoins la tribu OM</a>
+                </p>
+            </div>
+            <div class="film">
+                <!--<img src="images/bande_video_presentation.png" alt="">-->
+                <a href="#">Voir le Film</a>
+            </div>
+        </div>
+    </div>
+    <div class="corps_page">
+        <!-- Nav Adi -->
+        <div class="bandeau_nav"></div>
+        <!-- /Nav Adi -->
+        <!-- Image de fond -->
+        <img class="visu_bg" src="{{asset('bundles/adidasom/images/visu_b_presentation.jpg')}}" alt="Adidas">
+        <!-- /Image de fond -->
+        <ul id="ariane_adi" class="conteneur_centre">
+            <li><a href="{{path('adidas_om_homepage')}}">Accueil</a></li>
+            <li><span>Programme</span></li>
+        </ul>
+        <!-- Fil social -->
+        <div class="conteneur_centre xs">
+            {% block posts%}
+                {{ render(controller('AdidasPostBundle:Post:posts'))}}
+            {% endblock %}
+            <!-- /Fil social -->
+        </div>
+    </div>
+        <!-- Ancre top -->
+        <div class="ancre_top"></div>
+        <!-- Ancre top -->
+</div>
+{% endblock %}

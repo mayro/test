@@ -1,0 +1,7 @@
+parameters:
+    adidas_connection.oauth.class: Adidas\Bundle\ChallengeBundle\Command\ConnectionSocialCommand
+
+services:
+    adidas_connection.oauth:
+        class: %adidas_connection.oauth.class%
+        arguments: [@service_container]

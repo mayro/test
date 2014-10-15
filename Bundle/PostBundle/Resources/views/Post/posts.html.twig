@@ -1,0 +1,25 @@
+<div class="conteneur_twit">
+    <ul class="liste_social" id="liste_social_hp">
+        {% for post in twitter %}
+            <li class="item post">
+                <div class="txt">
+                    <p class="pseudo">@{{post.name}}</p>
+                    <p class="desc">{{post.source}}</p>
+                    <p class="hash">#{{post.htag}}</p>
+                    <p class="date">Posté il y a 14 heures</p>
+                </div>
+            </li>
+        {% endfor %}
+        {% for post in instag %}
+            <li class="item post">
+                <div class="visu"><img src="{{post.image}}" alt="{{post.name}}"></div>
+                <div class="txt">
+                    <p class="pseudo">@{{post.name}}</p>
+                    <p class="desc">{{post.source}}</p>
+                    <p class="hash">#{{post.htag}}</p>
+                    <p class="date">Posté il y a 14 heures</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

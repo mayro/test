@@ -1,0 +1,66 @@
+&#page_presentation {
+	.header_page {
+		.conteneur_centre {z-index: 10;}
+		.film a {
+			display: block;
+			background: url(../images/btn_play.png) no-repeat center top;
+			padding-top: 80px;
+			width: 110px;
+			color: @blanc;
+			text-transform: uppercase;
+			text-decoration: none;
+			text-align: center;
+			position: absolute;
+			top: 240px;
+			right: 10%;
+			z-index: 2;
+		}
+		.txt {
+			width: 670px;
+			padding-top: 30px;
+			color: @blanc;
+			.titre {
+				.adiN;
+				font-size: 67px;
+				margin-bottom: 0.2em;
+			}
+			.desc {
+				width: 600px;
+				margin-bottom: 2em;
+			}
+		}
+		.conteneur_video {
+			position: relative;
+			z-index: 1000;
+			.overlay {
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background: url(../images/bg_transp_noir_70.png) repeat left top;
+				z-index: 1000;
+			}
+			.popin_video {
+				position: fixed;
+				top: -150%;
+				left: 50%;
+				margin: -289px 0 0 -486px;
+				width: 972px;
+				height: 578px;
+				z-index: 1000;
+				.close_video {
+					background: #ffffff url(../images/popin_fermer.png) no-repeat center center;
+					position: absolute;
+					right: -20px;
+					top: -20px;
+					text-indent: -5000px;
+					width: 20px;
+					height: 20px;
+				}
+			}
+
+		}
+	}
+}

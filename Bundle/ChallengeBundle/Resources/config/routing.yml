@@ -1,0 +1,15 @@
+adidas_challenge_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AdidasChallengeBundle:Default:index }
+adidas_challenges:
+    path: /challenges
+    defaults: {_controller: AdidasChallengeBundle:Default:challenges}
+adidas_classement:
+    path: /classement
+    defaults: {_controller: AdidasChallengeBundle:Default:classement}
+adidas_classement_challenge:
+    path: /classement/{id}
+    defaults: {_controller: AdidasChallengeBundle:Default:classement, id:0}
+adidas_challenge:
+    path: /{id}/{particip}
+    defaults: {_controller: AdidasChallengeBundle:Default:challengeDetail, id: 0 ,particip: 0}

@@ -1,0 +1,84 @@
+<script type="text/javascript">
+///////////////////////
+//FORM Connexion
+///////////////////////
+var validator_connexion = $("#form_connexion_popin").validate({
+    rules: {
+        'util_connexion': "required",
+        'mdp_connexion': {
+            required: true,
+            minlength: 8,
+            maxlength: 12
+    }
+    },
+    invalidHandler: function(e, validator) {
+        var errors = validator_connexion.numberOfInvalids();
+        if (errors) {
+                var message = errors == 1
+                    ? 'Vous avez oublié 1 champ. Il est indiqué ci-dessous'
+                    : errors + ' champs ne sont pas correctement renseignés. Veuillez les vérifier ci-dessous';
+                $("#form_connexion_popin").find("p.erreur").html(message);
+                $("#form_connexion_popin").find("p.erreur").show();
+        } else {
+                $("#form_connexion_popin").find("p.erreur").hide();
+        }
+    },
+    messages: {
+        email_push: {
+                required: "L'email est obligatoire",
+                email: "Veuillez renseigner un email valide",
+                maxlength: "128 caractères maximum"
+        }
+    },
+    // the errorPlacement has to take the table layout into account
+    errorPlacement: function(error, element) {
+            /*if ( element.is(":checkbox") )
+                    error.appendTo( element.parent().parent().find('.c_error') );
+            else
+                    error.appendTo( element.parent().find('.c_error') );*/
+    },
+    // set the errorClass as a random string to prevent label disappearing when valid
+    errorClass : "bob",
+    // use highlight and unhighlight
+    highlight: function (element, errorClass, validClass) {
+        $(element.form).find("label[for=" + element.id + "]").parents('.ligne')
+        .addClass("error");
+
+        var errors = validator_connexion.numberOfInvalids();
+        if (errors) {
+            var message = errors == 1
+                ? 'Vous avez oublié 1 champ. Il est indiqué ci-dessous'
+                : errors + ' champs ne sont pas correctement renseignés. Veuillez les vérifier ci-dessous';
+            $(element.form).find("p.erreur").html(message);
+            $(element.form).find("p.erreur").show();
+        } else {
+            $(element.form).find("p.erreur").hide();
+        }
+    },
+    unhighlight: function (element, errorClass, validClass) {
+        $(element.form).find("label[for=" + element.id + "]").parents('.ligne')
+        .removeClass("error");
+
+        var errors = validator_connexion.numberOfInvalids();
+        if (errors) {
+            var message = errors == 1
+                    ? 'Vous avez oublié 1 champ. Il est indiqué ci-dessous'
+                    : errors + ' champs ne sont pas correctement renseignés. Veuillez les vérifier ci-dessous';
+            $(element.form).find("p.erreur").html(message);
+            $(element.form).find("p.erreur").show();
+        } else {
+            $(element.form).find("p.erreur").hide();
+        }
+    },
+    // specifying a submitHandler prevents the default submit, good for the demo
+    submitHandler: function() {
+        form.find('p.erreur').hide(0);
+        form.submit();
+    },
+    // set this class to error-labels to indicate valid fields
+    success: function(label) {
+        // set &nbsp; as text for IE
+        label.html("").addClass("checked");
+    }
+});
+</script>

@@ -1,0 +1,743 @@
+
+font: 13px 'adihausdinmedium', Arial;
+nav {
+	background: url(../images/bg_transp_noir_70.png) repeat left top;
+	height: 133px;
+	position: fixed;
+	left: 0;
+	top: 50%;
+	margin-top: -64px;
+	width: 37px;
+	text-align: center;
+	z-index: 10;
+	ul {
+		li a {
+			width: 26px;
+			height: 30px;
+			background: url(../images/puce_nav.png) no-repeat left -30px;
+			&.actif {
+				cursor: default;
+				background-position: left top;
+				&:hover {
+					background-position: -26px top;
+				}
+			}
+			&:hover {
+				background-position: -26px -30px;
+			}
+		}
+	}
+}
+.maj {text-transform: uppercase;}
+.bleu {color: @bleu;}
+
+.centre_hauteur {
+	height: 640px;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-top: -320px;
+}
+.btn_bleu, .btn_blanc {
+	font: 14px 'adihausdinbold', Arial;
+	color: @blanc;
+	padding: 10px;
+	background-color: @bleu;
+	text-decoration: none;
+	text-transform: uppercase;
+	.transition (1s);
+	border: none;
+	span {
+		display: inline-block;
+		padding: 1px 25px 1px 0;
+		background: url(../images/fleche_btn.png) no-repeat right center;
+	}
+	&:hover {
+		background-color: #49aad1;
+	}
+	
+}
+.btn_blanc {
+	color: @bleu;
+	background-color: @blanc;
+	span {
+		background: url(../images/fleche_btn_blanc.png) no-repeat right center;
+	}
+	&:hover {
+		background-color: @blanc;
+		color: #49aad1;
+	}
+}
+.btn_bleu_fleche, .btn_bleu_coupe, .btn_blanc_fleche {
+	font: 14px 'adihausdinbold', Arial;
+	color: @blanc;
+	padding: 10px;
+	background: url(../images/btn_fleche.png) no-repeat right center;
+	text-decoration: none;
+	text-transform: uppercase;
+	border: none;
+	text-align: center;
+	&.insta, &.fb, &.twit {
+		padding-left: 40px;
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			margin-top: -10px;
+			width: 20px;
+			height: 20px;
+		}
+	}
+	&.insta {
+		&:before {.sprite(-50px, 0);}
+	}
+	&.fb {
+		&:before {.sprite(0, 0);}
+	}
+	&.twit {
+		&:before {.sprite(-100px, 0);}
+	}
+}
+.btn_bleu_fleche {
+	padding-right: 25px;
+	font-size: 14px;
+}
+.btn_bleu_coupe {
+	background: url(../images/btn_coupe.png) no-repeat right center;
+	font-size: 14px;
+	cursor: pointer;
+	padding-right: 20px;
+	&.xl {
+		font-size: 20px;
+		padding: 3px 15px;
+	}
+}
+.btn_blanc_fleche {
+	.adiN;
+	font-size: 24px;
+	background: url(../images/btn_fleche_blanche.png) no-repeat right center;
+	padding-right: 35px;
+	padding-left: 20px;
+	color: @bleu;
+	span {color: @dore;}
+}
+.lien_plus {
+	color: @bleu;
+	text-transform: uppercase;
+	padding-left: 10px;
+	text-decoration: none;
+	background: url(../images/fleche_blanche_lien.png) no-repeat left center;
+	.transition (1s);
+	&:hover {
+		text-decoration: underline;
+		color: @blanc;
+	}
+}
+.fleche_next {
+	position: absolute;
+	z-index: 10;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -20px;
+}
+
+
+.loader {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: @noir;
+	z-index: 10;
+	color: @blanc;
+	text-align: center;
+	.obj_loader {
+		background: url(../images/ajax-loader.gif) no-repeat center top;
+		width: 50px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin: -20px 0 0 -25px;
+		padding-top: 40px;
+	}
+}
+.conteneur_visu {
+	position: relative;
+	overflow: hidden;
+	.visu_full {
+		position: absolute;
+		> img {
+			max-width: none !important;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.conteneur_centre {
+	width: 960px;
+	margin: 0 auto;
+	&.xs {
+		width: 800px;
+	}
+}
+
+.mob_only {display: none;}
+
+
+//Forms
+input[type="text"], input[type="password"], select {
+	.border_box;
+	padding: 2px 5px;
+}
+input[type="text"], input[type="password"] {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid @blanc;
+	color: @blanc;
+}
+.disabled {
+	input[type="text"], input[type="password"] {
+		color: #999;
+		border-color: #999;
+	}
+	label {color: #999;}
+}
+.ligne.error label, label.error {
+	color: @erreur !important;
+	a {color: @erreur !important;}
+}
+
+p.erreur {
+	display: none;
+	color: @erreur;
+}
+
+
+//Liste Social
+.liste_social {
+	color: @blanc;
+	margin-left: 30px;
+	.item {
+		width: 300px;
+		margin-bottom: 45px;
+		margin-left: 45px;
+		float: left;
+		border-right: 1px solid transparent;
+		overflow: hidden;
+		.border_box;
+		color: @blanc;
+		&.titre {
+			font-size: 24px;
+			margin-bottom: 20px;
+			.adiN;
+			.titre_twit {
+				padding-left: 40px;
+				background: url(../images/picto_twit.png) no-repeat left bottom;
+			}
+		}
+		&.post {
+			background: url(../images/bloc_social_b.png) no-repeat left bottom;
+			border-top: 2px solid @blanc;
+			padding: 15px;
+			font-size: 18px;
+			.visu {
+				margin: -15px -13px 0.5em -13px;
+			}
+			.txt {
+				.desc {.wrap;}
+				p {margin-bottom: 0.2em;}
+				.pseudo, .hash {
+					color: @bleu;
+				}
+				.date {font-size: 14px;}
+				a {color: @blanc;}
+			}
+			&.multiple {
+				.hash_general {
+					.adiN;
+					font-size: 24px;
+				}
+				li.txt {
+					margin-bottom: 1.5em;
+					font-size: 18px;
+				}
+			}
+			
+		}
+		&.challenge {
+			width: 300px;
+			height: 332px;
+			position: relative;
+			cursor: pointer;
+			.visu {
+				padding: 8px 0 0 7px;
+				img {
+					width: 286px;
+				}
+			}
+			.masque {
+				width: 300px;
+				height: 332px;
+				background: url(../images/cadre_challenge_dore.png) no-repeat left bottom;
+				position: absolute;
+				left: 0;
+				top: 0;
+				.head {
+					position: absolute;
+					left: 23px;
+					top: 20px;
+					right: 23px;
+					.titre {
+						.adiN;
+						font-size: 40px;
+						margin-bottom: 0.1em;
+						a {
+							color: @blanc;
+							text-decoration: none;
+						}
+					}
+					.date {
+						.adiN;
+						font-size: 20px;
+					}
+				}
+				.particip {
+					position: absolute;
+					left: 23px;
+					bottom: 10px;
+					font-size: 20px;
+					padding-left: 25px;
+					margin: 0;
+					&:before {
+						content: '';
+						position: absolute;
+						left: 0;
+						top: 50%;
+						margin-top: -6px;
+						width: 20px;
+						height: 15px;
+						.sprite(0, -50px);
+					}
+				}
+				.type {
+					position: absolute;
+					right: 8px;
+					bottom: 40px;
+					width: 20px;
+					height: 20px;
+				}
+			}
+			&.fb {
+				.type {.sprite(0, 0);}
+			}
+			&.twit {
+				.type {.sprite(-100px, 0);}
+			}
+			&.insta {
+				.type {.sprite(-50px, 0);}
+			}
+			&.perm {
+				.masque {
+					background: url(../images/cadre_challenge_bleu.png) no-repeat left bottom;
+				}
+				
+			}
+		}
+	}
+	
+}
+
+//Visuels Full pages internes
+.header_page, .corps_page {
+	position: relative;
+	.visu_bg {
+		position: absolute;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+	.conteneur_centre {
+		position: relative;
+		z-index: 2;
+	}
+}
+.header_page {
+	overflow: hidden;
+	&.xl {height: 498px;}
+	&.xs {height: 185px;}
+	.visu_bg {bottom: 0;}
+	.logo_po {
+		text-align: center;
+	}
+	color: @blanc;
+	&:after {
+		content: '';
+		width: 94px;
+		height: 15px;
+		background: url(../images/logo_adidas.png) no-repeat left top;
+		position: absolute;
+		left: 0;
+		bottom: 15px;
+	}
+}
+.corps_page {
+	padding-top: 70px;
+	overflow: hidden;
+	color: @blanc;
+	.visu_bg {top: 0;}
+	h1 {
+		.adiN;
+		font-size: 67px;
+		margin-bottom: 0;
+	}
+	.intro {
+		font-size: 14px;
+		color: @bleu;
+	}
+	.bandeau_nav {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		min-height: 50px;
+		background-color: @noir;
+		z-index: 2;
+		.conteneur_centre {
+			height: 50px;
+			position: relative;
+		}
+		ul {
+			margin-bottom: 0;
+			.clearfix;
+			li {
+				width: 100/3%;
+				float: left;
+				text-align: center;
+				&:first-child {text-align: left;}
+				&:last-child {text-align: right;}
+				a {
+					font-size: 20px;
+					text-transform: uppercase;
+					line-height: 50px;
+					color: @blanc;
+					text-transform: uppercase;
+					text-decoration: none;
+					&.actif, &:hover {
+						color: @bleu;
+					}
+				}
+			}
+		}
+		.trait {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			height: 3px;
+			width: 0px;
+			background-color: @bleu;
+		}
+	}
+	#ariane_adi {
+		li {
+			display: inline;
+			color: @blanc;
+			font-size: 12px;
+			padding-left: 5px;
+			a {
+				color: @blanc;
+				padding-right: 20px;
+				background: url(../images/fleche_blanche_lien.png) no-repeat right center;
+			}
+		}
+		margin-bottom: 30px;
+	}
+}
+
+//Cartes carrousel
+.slide {
+	height: 320px;
+	.lt-ie9 & {height: 380px;} //////////CORREC IE8
+}
+.carte {
+	position: relative;
+	width: 246px;
+	height: 291px;
+	padding-bottom: 90px;
+	.carte_seule {
+		position: absolute;
+		width: 246px;
+		height: 291px;
+		left: 0px;
+		top: 0px;
+		margin: -16px 0 0 -25px;
+		.lt-ie9 & {margin: 0px;} //////////CORREC IE8
+		.photo {
+			width: 200px;
+			margin: 7px 0 0 5px;
+		}
+		.deco {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 211px;
+			height: 291px;
+			background: url(../images/carte_bleue.png) no-repeat left top;
+			.nom {
+				.adiN;
+				font-size: 20px;
+				width: 160px;
+				height: 24px;
+				line-height: 24px;
+				overflow: hidden;
+				color: @blanc;
+				text-align: center;
+				position: absolute;
+				left: 50%;
+				top: 23px;
+				margin-left: -80px;
+				background: url(../images/bg_prenom_bleu.png) no-repeat left top;
+			}
+			.points {
+				position: absolute;
+				left: 15px;
+				bottom: 25px;
+				margin: 0;
+				.adiN;
+				font-size: 20px;
+				color: @blanc;
+			}
+		}
+	}
+	.reflet {
+		position: absolute;
+		left: 0px;
+		bottom: 0px;
+		background: url(../images/reflet_carte_bleue.png) no-repeat left top;
+		width: 246px;
+		height: 104px;
+	}
+	.classement {
+		position: absolute;
+		right: 25px;
+		bottom: 55px;
+		color: @blanc;
+		margin-bottom: 0;
+		.adiN;
+		font-size: 50px;
+		text-shadow: 1px 1px 9px #333;
+
+	}
+	&.actif {
+		.classement {color: @dore;}
+	}
+	&.bleu {
+		.deco {
+			background-image: url(../images/carte_bleue.png);
+			.nom {background-image: url(../images/bg_prenom_bleu.png);}
+		}
+		.reflet {background: url(../images/reflet_carte_bleue.png) no-repeat left top;}
+	}
+	&.dore {
+		.deco {
+			background-image: url(../images/carte_dore.png);
+			.nom {background-image: url(../images/bg_prenom_dore.png);}
+		}
+		.reflet {background: url(../images/reflet_carte_doree.png) no-repeat left top;}
+	}
+	&.rouge {
+		.deco {
+			background-image: url(../images/carte_rouge.png);
+			.nom {background-image: url(../images/bg_prenom_rouge.png);}
+		}
+		.reflet {background: url(../images/reflet_carte_rouge.png) no-repeat left top;}
+	}
+}
+.fake_select {
+	display: inline-block;
+	position: relative;
+	width: 170px;
+	span {display: inline-block;}
+	.selected {
+		.border_box;
+		width: 100%;
+		border: 1px solid @blanc;
+		padding: 0 30px 0 10px ;
+		position: relative;
+		cursor: pointer;
+		height: 30px;
+		line-height: 30px;
+		&:before {
+			content:'';
+			position: absolute;
+			right: 8px;
+			top: 50%;
+			margin-top: -3px;
+			width: 11px;
+			height: 6px;
+			background: url(../images/fleche_blanche_b.png) no-repeat left top;
+		}
+	}
+	.liste {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 30px;
+		right: 0;
+		border-left: 1px solid @blanc;
+		.contenu_liste {
+			display: block;
+			padding: 10px 0;
+			background: url(../images/coin_coupe.png) no-repeat right bottom;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 10px;
+				right: 10px;
+				border-bottom: 1px dashed @blanc;
+			}
+			.item {
+				display: block;
+				a {
+					display: block;
+					color: @blanc;
+					padding: 5px 10px;
+					text-decoration: none;
+					&:hover {text-decoration: underline;}
+				}
+			}
+		}
+
+	}
+	&.open {
+		.selected {
+			&:before {
+				background-image: url(../images/fleche_blanche_h.png);
+			}
+			border-bottom: none;
+		}
+	}
+}
+
+//form compte
+form#form_inscription, form#form_connexion, form#form_modif, form#form_passer_premium {
+	label, input {
+		vertical-align: middle;
+	}
+	label {
+		font-family: 'adihausdinbold';
+		font-size: 14px;
+		margin-right: 5px;
+		display: inline-block;
+		&.max_120 {max-width: 120px;}
+	}
+	input {
+		&#nom, &#nomb {width: 206px;}
+		&#prenom, &#prenomb {width: 185px;}
+		&#email, &#emailb {width: 193px;}
+		&#cp, &#cpb {width: 160px;}
+		&#util, &#utilb {width: 140px;}
+		&#mdp, &#mdpb {width: 153px;}
+		&#confirm_mdp, &#confirm_mdpb {width: 138px;}
+		&#date, &#dateb {width: 122px;}
+	}
+	select {
+		background: @blanc;
+		border: 1px solid @blanc;
+		color: @noir;
+		//option.default {color: @blanc;}
+	}
+	.ligne {
+		.clearfix;
+		&.disabled {
+			position: relative;
+			label:after {
+				content: '';
+				background: url(../images/spacer.gif) repeat left top;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				cursor: default;
+				z-index: 10
+			}
+		}
+		&.type_checkbox {
+			input {
+				vertical-align: middle;
+			}
+			label {
+				font-size: 10px;
+				vertical-align: middle;
+			} 
+		}
+		&.type_selects {
+			label {
+				display: block;
+				margin-bottom: 0.2em;
+			}
+		}
+		&.error {
+			label {color: #F00;}
+		}
+	}
+	.mentions {font-size: 10px;}
+	.help_mdp {cursor: pointer;}
+	.bloc_code {
+		.border_box;
+		width: 260px;
+		border: 1px solid @blanc;
+		text-align: center;
+		padding-bottom: 30px;
+		margin-bottom: 20px;
+		position: relative;
+		.intro {
+			padding: 5px 3px;
+			text-transform: uppercase;
+			font-size: 12px;
+			margin-bottom: 0;
+			label {
+				font-family: 'adihausdinmedium', Arial;
+				font-size: 12px;
+			}
+		}
+		.mention {
+			font-size: 10px;
+			background: url(../images/pointilles.png) no-repeat center center;
+		}
+		input {
+			text-align: center;
+			color: @dore;
+			font-size: 34px;
+			width: 80%;
+			text-transform: uppercase;
+		}
+		.conteneur_btn a {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color:  @blanc;
+			color: @dore !important;
+			.adiN;
+			font-size: 15px;
+			text-decoration: none;
+			padding: 5px 5px 5px 5px;
+			span {
+				background: url(../images/fleche_doree.png) no-repeat right center;
+				display: inline-block;
+				padding: 2px 30px 2px 0;
+			}
+		}
+	}
+	.bouton button {
+		width: 260px;
+		font-size: 15px;
+	}
+}

@@ -1,0 +1,286 @@
+<div class="contenu_popin" id="popin_modif">
+    <div class="titre pre"><!-- Class pre ou free -->
+        ton profil <span>freemium</span>
+    </div>
+    <form action="#" method="post" id="form_modif">
+        {% if error is defined %}
+            <p class="erreur" style="display:block">{{ error}}</p>
+        {% else %}
+            <p class="erreur"></p>
+        {% endif %}
+        <div class="row">
+            <div class="col_1_3">
+                    <div class="photo_id">
+                        <img src="{{member.picture}}" alt="">
+                    </div>
+            </div>
+                <div class="col_2_3">
+                    <p class="ligne">
+                        {{form_widget(form_reg.civ)}}
+                    </p>
+                    <p class="ligne">
+                        <label for="nom">Nom*</label> {{form_widget(form_reg.nom)}}
+                    </p>
+                    <p class="ligne">
+                        <label for="prenom">Prénom*</label> {{form_widget(form_reg.prenom)}}
+                    </p>
+                    <p class="ligne">
+                        <label for="email">E-mail*</label> {{form_widget(form_reg.email)}}
+                    </p>
+                    <p class="ligne">
+                        <label for="cp">Code postal*</label> {{form_widget(form_reg.cp)}}
+                    </p>
+                    <p class="ligne type_selects">
+                        <label for="aaaa">Date de naissance*</label>
+                        <span class="selects">
+                            {{form_widget(form_reg.jj)}}
+                            {{form_widget(form_reg.mm)}}
+                            {{form_widget(form_reg.aaaa)}}
+                        </span>
+                    </p>
+                    <p class="ligne disabled">
+                        <label for="util">Nom d'utilisateur*</label> {{form_widget(form_reg.util)}}
+                    </p>
+                    <p class="ligne">
+                        <label for="mdp">Mot de passe* <img src="{{asset('bundles/adidasom/images/picto_help.png')}}" alt="" title="Le mot de passe doit faire entre 8 et 12 caractères et contenir au moins 1 chiffre et 1 lettre." class="help_mdp"></label> {{form_widget(form_reg.mdp)}} 
+                    </p>
+                    <p class="ligne">
+                        <label for="confirm_mdp" class="max_120">Confirmez le mot de passe*</label> {{form_widget(form_reg.confirm_mdp)}}
+                    </p>
+                    <div class="bloc_code ligne">
+                        <p class="intro"><label for="code">entre ici ton numéro de maillot**<br>
+                                pour pouvoir relever tous nos défis !</label></p>
+                        <p class="mention">** présent sur l'étiquette</p>
+                        <p>
+                            {{form_widget(form_reg.code)}}
+                        </p>
+                        <p class="conteneur_btn">
+                            <a href="http://www.adidas.fr/Olympique-de-Marseille.html" target="_blank"><span>Découvre le nouveau maillot</span></a>
+                        </p>
+                    </div>
+                        <div class="bouton">
+                            <button type="submit" class="btn_bleu_coupe"><span>Valider mon inscription</span></button>
+                        </div>
+                </div>
+            </div>
+    </form>
+</div>
+<script type="text/javascript" src="{{asset('bundles/adidasom/javascript/min//partage_social.min.js')}}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+        ///////////////////////
+        //AJOUT DE METHODES DE VALIDATION
+        ///////////////////////
+
+        $.validator.addMethod("lettersonly", function(value, element) {
+          return this.optional(element) || /^[a-z]+$/i.test(value);
+        }, "Que des lettres svp"); 
+
+
+  $.validator.addMethod("FullDate", function() {
+        //if all values are selected
+        if($("#jj").val() != "" && $("#mm").val() != "" && $("#aaaa").val() != "") {
+                return true;
+        } else {
+                return false;
+        }
+  }, 'Veuillez remplir votre date de naissance');
+
+  //Validation du mot de passe
+  $.validator.addMethod("mdpAdi", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9]{8,12}$/.test( value );
+  }, 'Le mot de passe doit faire entre 8 et 12 caractères et contenir au moins 1 chiffre et 1 lettre');
+
+  //Validation du code maillot
+  $.validator.addMethod("codeMaillotAdi", function(value, element) {
+        return this.optional(element) || /^A|H|T\-[0-9]{6}$/.test( value );
+  }, 'Le code maillot n\'est pas bon');
+
+
+  // this function checks the selected date, returning true if older than 18 years
+  $.validator.addMethod("AgeAdi", function() {
+        //only compare date if all items have a value
+        if($("#jj").val() != "" && $("#mm").val() != "" && $("#aaaa").val() != "") {
+                var day = $('#jj').val();
+                var month = $('#mm').val();
+                var year = $('#aaaa').val();
+                var dateBirth = new Date(year, month, day, 0, 0, 0, 0).getTime() / 1000;
+                var currentDateobj = new Date();
+                var date13 = new Date(currentDateobj.getFullYear() - 13, currentDateobj.getMonth(), currentDateobj.getDate(), 0, 0, 0, 0).getTime() / 1000;
+                var date16 = new Date(currentDateobj.getFullYear() - 16, currentDateobj.getMonth(), currentDateobj.getDate(), 0, 0, 0, 0).getTime() / 1000;
+
+                if (dateBirth > date13)
+                {
+                        $.colorbox({html: $('#under13').clone(), width:"50%"});
+                        return false;
+                }
+                if (dateBirth < date13 && dateBirth > date16)
+                {
+                        $.colorbox({html: $('#between1315').clone(), width:"50%", onComplete: function() {
+                                if ($('#pcf').val() == 'Y')
+                                        $("#colorbox #between1315 input").attr("checked", "checked");
+                                else
+                                        $("#colorbox #between1315 input").attr("checked", false);									
+                                $("#colorbox #between1315 input").change(function() {
+                                        if ($(this).is(':checked'))
+                                                $('#pcf').val('Y');
+                                        else
+                                                $('#pcf').val('N');
+                                });
+                                $("#colorbox .button").click(function() {
+                                        if ($('#pcf').val() == 'Y')
+                                        {
+                                                $('#register_button').val('Y');
+                                                form.submit();
+                                        }
+                                        return false;
+                                });
+                        }});
+                        return false;
+                }
+                return true;
+        }
+  }, 'Vous devez avoir 18 ans pour vous inscrire');
+
+
+
+
+        ///////////////////////
+        //FORM INSCRIPTION
+        ///////////////////////
+        var validator = $("#form_modif").validate({
+                rules: {
+                        civ: "required",
+                        nom: {
+                                required: true,
+                                lettersonly: true,
+                                maxlength: 50
+                        },
+                        prenom: {
+                                required: true,
+                                lettersonly: true,
+                                maxlength: 50
+                        },
+                        email: {
+                                required: true,
+                                email: true,
+                                maxlength: 50
+                        },
+                        cp: {
+                                required: true,
+                                digits: true,
+                                minlength: 5,
+                                maxlength: 5
+                        },
+                        aaaa: "FullDate",
+                        mdp: {
+                                minlength: 8,
+                                maxlength: 12,
+                                mdpAdi: true
+                        },
+                        confirm_mdp: {
+                                equalTo: "#mdp"
+                        },
+                        reglement :"required",
+                        code : {
+                                codeMaillotAdi: true
+                        }
+                },
+                groups:{
+                        date_of_birth:"jj mm aaaa"
+                },
+                invalidHandler: function(e, validator) {
+                        var errors = validator.numberOfInvalids();
+                        if (errors) {
+                                var message = errors == 1
+                                        ? 'Vous avez oublié 1 champ. Il est indiqué ci-dessous'
+                                        : errors + ' champs ne sont pas correctement renseignés. Veuillez les vérifier ci-dessous';
+                                $("#form_modif").find("p.erreur").html(message).show();
+                        } else {
+                                $("#form_modif").find("p.erreur").hide();
+                        }
+                },
+                /*messages: {
+                        email_push: {
+                                required: "L'email est obligatoire",
+                                email: "Veuillez renseigner un email valide",
+                                maxlength: "128 caractères maximum"
+                        }
+                },*/
+                // the errorPlacement has to take the table layout into account
+                errorPlacement: function(error, element) {
+                        /*if ( element.is(":checkbox") )
+                                error.appendTo( element.parent().parent().find('.c_error') );
+                        else
+                                error.appendTo( element.parent().find('.c_error') );*/
+                },
+                // set the errorClass as a random string to prevent label disappearing when valid
+                errorClass : "bob",
+                // use highlight and unhighlight
+                highlight: function (element, errorClass, validClass) {
+                        $(element.form).find("label[for=" + element.id + "]").parents('.ligne')
+                        .addClass("error");
+
+                        var errors = validator.numberOfInvalids();
+                        if (errors) {
+                                var message = errors == 1
+                                        ? 'Vous avez oublié 1 champ. Il est indiqué ci-dessous'
+                                        : errors + ' champs ne sont pas correctement renseignés. Veuillez les vérifier ci-dessous';
+                                $(element.form).find("p.erreur").html(message).show();
+                        } else {
+                                $(element.form).find("p.erreur").hide();
+                        }
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                        $(element.form).find("label[for=" + element.id + "]").parents('.ligne')
+                        .removeClass("error");
+
+                        var errors = validator.numberOfInvalids();
+                        if (errors) {
+                                var message = errors == 1
+                                        ? 'Vous avez oublié 1 champ. Il est indiqué ci-dessous'
+                                        : errors + ' champs ne sont pas correctement renseignés. Veuillez les vérifier ci-dessous';
+                                $(element.form).find("p.erreur").html(message).show();
+                        } else {
+                                $(element.form).find("p.erreur").hide();
+                        }
+                },
+                // specifying a submitHandler prevents the default submit, good for the demo
+                submitHandler: function(form) {
+                $.ajax({
+                    
+                       type: "POST",
+                       url: "{{ path('adidas_om_profil_edit')}}",
+                       data: $(form).serialize(),
+                       success: function(result){
+                           alert('la');
+                           if(result) {
+                              $("#form_modif p.erreur").html(result).show();
+                           }
+                           else {
+                               alert('succes');
+                           $.colorbox({
+                                html: '<div class="contenu_popin">Merci, vos modifications ont bien été enregistrées</div>', 
+                                width: largeurPopin,
+                                maxWidth: maxPopin,
+                                onComplete: function() {
+                                $.colorbox.resize();
+                                }
+                        });
+                    }
+                        return false;
+                         
+                       }
+                   });    
+
+                },
+                // set this class to error-labels to indicate valid fields
+                success: function(label) {
+                        // set &nbsp; as text for IE
+                        label.html("").addClass("checked");
+                }
+        });
+
+});
+</script>

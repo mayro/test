@@ -1,0 +1,116 @@
+{% extends 'AdidasOmBundle::layout.html.twig' %}
+{% block content %}
+<!-- CORPS -->
+<script type="text/javascript">
+    function initTag() {
+        adidas.Analytics.tagPageView('EXP|FB|OM|CONFIRM','EXP|FB|OM');
+        {#% if(uci) %}
+            adidas.Analytics.tagRegistration('','');
+        {% endif %#}
+    }
+    window.onload = initTag;
+</script>
+<div class="page_om" id="page_merci">
+    <div class="mob_only" id="header_mob">
+        <img src="{{asset('bundles/adidasom/images/logo_adidas_mob.gif')}}" alt="Adidas">
+    </div>
+    <div class="section_merci">
+        <div id="bg_img_merci" class="conteneur_visu">
+            <div class="visu_full" data-w="1200" data-h="640">
+                <img src="{{asset('bundles/adidasom/images/visu_full.jpg')}}" width="1200" height="640" alt="">
+            </div>
+        </div>
+        <div class="bg_transp"></div>
+        <div class="contenu">
+            <div class="conteneur_centre" id="partie_haute">
+                <p id="logo_peuple"><img src="{{asset('bundles/adidasom/images/logo_peuple.png')}}" alt="Peuple Olympien"></p>
+                <p class="inscrip">Ton inscription est bien enregistrée</p>
+                <p class="surveille">Surveille ta boîte mail, <br>
+                        tu devrais bientôt recevoir un mail de validation !</p>
+                <div class="partage" data-url="{{fb_share_url}}">
+                        Partager
+                     <div>
+                     {% set url = 'https://twitter.com/intent/tweet?url=' %}
+                     <a href="#" onclick="return fbs_click()" id="lien_fb" target="_blank"><img src="{{asset('bundles/adidasom/images/fb.png')}}" alt="Partager sur Facebook"></a> 
+                     <a href="{{url~app.request.host|lower~'&via='~app.request.host}}" target="_blank" id="lien_twitt" ><img src="{{asset('bundles/adidasom/images/twitt.png')}}" alt="Partager sur Twitter"></a> 
+                     </div>
+            </div>
+            <div class="bande">
+                <div class="conteneur_centre">
+                    <div class="col_g">
+                            <p class="titre">Inscrit en freemium ?</p>
+                            <p>Pas de problème ! Dès le lancement du programme, tu pourras à tout moment <br>
+                                    passer en <strong class="dore">mode premium</strong> grâce au numéro unique inscrit sur ton nouveau maillot de l’OM.</p>
+                    </div>
+                    <div class="col_d">
+                        <a href="http://www.adidas.fr/Olympique-de-Marseille.html" target="_blank" class="btn_bleu_fleche" onclick="adidas.Analytics.tagPageElement('EXP|FB|OM|CONFIRM|BUY_JERSEY','EXP|FB|OM|CONFIRM');>Voir le maillot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="videos">
+                <ul class="conteneur_centre">
+                    <li id="video1">
+                        <div class="vignette">
+                            <a href="#">Interview mandanda</a>
+                        </div>
+                        <div class="masque"><span></span></div>
+                    </li>
+                    <li id="video2">
+                        <div class="vignette">
+                            <a href="#">Interview gignac</a>
+                        </div>
+                        <div class="masque"><span></span></div>
+                    </li>
+                    <li id="video3" class="disabled">
+                        <div class="vignette">
+                            <a href="#">Coming soon</a>
+                        </div>
+                        <div class="masque"><span></span></div>
+                    </li>
+                    <li id="video4" class="disabled">
+                        <div class="vignette">
+                            <a href="#">Coming soon</a>
+                        </div>
+                        <div class="masque"><span></span></div>
+                    </li>
+                </ul>
+            </div>
+            <!-- popins Videos -->
+            <div class="popins_videos">
+                <div class="overlay_popin"></div>
+                <ul>
+                    <!-- video -->
+                    <li class="conteneur_video">
+                            <div class="contenu_video">
+                                    <video class="classique" width="972" height="578" poster="{{asset('bundles/adidasom/videos/intro.jpg')}}">
+                                            <source type="video/mp4" src="{{asset('bundles/adidasom/videos/intro.mp4')}}" />
+                                    </video>
+                            </div>
+                            <a href="#" class="close_video">Fermer</a>
+                    </li>
+                    <!-- /Video -->
+                    <!-- video -->
+                    <li class="conteneur_video">
+                            <div class="contenu_video">
+                                    <video class="classique" width="972" height="578" poster="{{asset('bundles/adidasom/videos/intro.jpg')}}">
+                                            <source type="video/mp4" src="{{asset('bundles/adidasom/videos/intro.mp4')}}" />
+                                    </video>
+                            </div>
+                            <a href="#" class="close_video">Fermer</a>
+                    </li>
+                    <!-- /Video -->
+                </ul>
+            </div>
+                <!-- /popins Videos -->
+        </div>
+    </div>
+    <!-- Ancre top -->
+    <div class="ancre_top"></div>
+    <!-- Ancre top -->
+</div>
+<!-- /CORPS -->
+{% include 'AdidasOmBundle:js:social.js.twig' %}
+<script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/main.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('bundles/adidasom/javascript/min/partage_social.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="select_jeu">
+    <!-- Fake select -->
+    <span class="fake_select">
+        <span class="selected">Tous les jeux</span>
+        <span class="liste">
+            <span class="contenu_liste">
+                {%for challenge in challenges%}
+                    <span class="item"><a href="{{path('adidas_classement_challenge', {'id': challenge.id})}}">{{challenge.nameChallenge}}</a></span>
+                {%endfor%}
+            </span>
+        </span>
+    </span>
+    <!-- /Fake select -->
+</div>

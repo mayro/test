@@ -1,0 +1,152 @@
+&#page_mon_compte {
+	.corps_page {padding-bottom: 100px;}
+	.partie_score {
+		.clearfix;
+		margin-bottom: 20px;
+		.bienvenue {
+			font-size: 16px;
+			width: 275px;
+			float: right;
+			.titre {
+				.adiN;
+				font-size: 50px;
+				line-height: 1em;
+				margin-bottom: 0.2em;
+				span {color: @bleu;}
+			}
+		}
+		.classements {
+			.adiN;
+			font-size: 24px;
+			width: 300px;
+			float: left;
+			text-align: center;
+			.points {
+				font-size: 50px;
+				padding-bottom: 10px;
+				border-bottom: 2px dashed @blanc;
+				span {color: @bleu;}
+			}
+			.general {
+				padding: 10px 0;
+				border-bottom: 2px dashed @blanc;
+			}
+			.amis {
+				padding: 10px 0;
+				border-bottom: 2px dashed @blanc;
+			}
+			.intitule {
+				margin: 0;
+				img {height: 20px; vertical-align: baseline;}
+			}
+			.position {
+				font-size: 45px;
+				margin: 0;
+				span {color: @bleu;}
+			}
+			.partage {
+				padding-top: 10px;
+				a {margin-left: 10px;}
+				p.txt {
+					font-family: 'adihausdinmedium', Arial;
+					font-size: 15px;
+					color: @bleu;
+				}
+				.btn_bleu_coupe {
+					display: block;
+					margin: 0;
+				}
+			}
+		}
+		.conteneur_carte {
+			float: left;
+			padding: 40px 0 0 100px;
+		}
+	}
+	.partie_profil {
+		margin-bottom: 50px;
+		.titre {
+			.adiN;
+			font-size: 67px;
+			margin: 0;
+			span {color: @bleu; font-size: 18px;}
+		}
+		.modifier {
+			padding-left: 200px;
+			margin-bottom: 2em;
+			a {color: @blanc; text-transform: uppercase;}
+		}
+		.infos {
+			display: inline-block;
+			background: url(../images/bg_blanc_transp.png) repeat left top;
+			font-size: 16px;
+			padding: 10px;
+			margin-right: 20px;
+			span {color: @bleu;}
+		}
+		&.pre {
+			.infos, .titre {
+				span {color: @dore;}
+			}
+		}
+	}
+	.partie_historique {
+		.titre {
+			.adiN;
+			font-size: 67px;
+			margin: 0;
+			span {color: @bleu; font-size: 18px;}
+		}
+		.sous_titre {
+			color: @bleu;
+			font-size: 14px;
+			margin-bottom: 30px;
+		}
+		.liste_historique {
+			.adiN;
+			font-size: 24px;
+			li {
+				.conteneur {
+					display: inline-block;
+					padding: 15px 0;
+					border-bottom: 2px dashed #CCC;
+					.illu {
+						vertical-align: middle;
+						position: relative;
+						display: inline-block;
+						margin-right: 15px;
+						.picto {width: 35px;}
+						.type {
+							position: absolute;
+							left: 20px;
+							top: 20px;
+						}
+					}
+					a {
+						color: @blanc;
+						text-decoration: none;
+						&:hover {text-decoration: underline;}
+					}
+					.separateur {
+						display: inline-block;
+						vertical-align: middle;
+						width: 18px;
+						height: 19px;
+						background: url(../images/chevron.png) no-repeat left top;
+						margin: 0 5px;
+					}
+					.challenge {
+						padding-left: 25px;
+						color: @dore;
+						background: url(../images/om_dore.png) no-repeat left center;
+						&.perm {
+							color: @bleu;
+							background: url(../images/om_bleu.png) no-repeat left center;
+						}
+					}
+				}
+				&:last:child .conteneur {border: none;}
+			}
+		}
+	}
+}
