@@ -1,2 +1,3 @@
 <?php
-echo "Bonjour !"
+echo "Bonjour !";
+echo "test reset git commit"
