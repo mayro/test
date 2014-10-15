@@ -21,6 +21,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $member = $this->get('adidas.repository.challenge')                
         ->getAll();
+//die('test');
     }
     
     public function challengesAction()
