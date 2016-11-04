@@ -1,3 +1,3 @@
 <?php
 echo "Bonjour !";
-echo "test reset git commit";
+echo "test pull request for webhook";
