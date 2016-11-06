@@ -1,3 +1,3 @@
 <?php
-echo "Bonjour !j";
+echo "Bonjour !";
 echo "test pull request for webhook";
